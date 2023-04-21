@@ -6,8 +6,10 @@
     android:layout_height="wrap_content"
     android:paddingTop="5dp"
     android:paddingBottom="5dp"
+    android:layout_marginVertical="2.5dp"
     android:background="@drawable/round"
-    android:backgroundTint="@color/background_slightly_blue">
+    android:backgroundTint="@color/background_slightly_blue"
+    >
 
     <ImageView
         android:id="@+id/icon"
@@ -35,44 +37,57 @@
         android:contentDescription="shipping type icon" />
 
     <TextView
-        android:layout_marginStart="3dp"
         android:id="@+id/shipping_type"
+        android:fontFamily="@font/lato"
+        android:textFontWeight="@integer/bold"
+        android:layout_marginStart="3dp"
         android:layout_width="0dp"
         android:textSize="11sp"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/price"
         app:layout_constraintStart_toEndOf="@+id/shipping_type_icon"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Entrega Relâmpago" />
 
     <TextView
-        android:layout_marginStart="10dp"
         android:id="@+id/name"
-        android:textSize="16sp"
+        android:fontFamily="@font/lato"
+        android:textFontWeight="@integer/bold"
+        android:layout_marginStart="10dp"
+        android:textSize="20sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/icon"
+        app:layout_constraintEnd_toStartOf="@id/price"
         app:layout_constraintTop_toBottomOf="@id/shipping_type"
         tools:text="Name" />
 
     <TextView
         android:id="@+id/date"
+        android:fontFamily="@font/lato"
+        android:textFontWeight="@integer/regular"
         android:layout_width="0dp"
-        android:textSize="11sp"
+        android:textSize="14sp"
+        android:textColor="@color/text_placeholders"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintEnd_toStartOf="@id/price"
         tools:text="dd/mm/aaaa HH:mm" />
 
     <TextView
         android:id="@+id/price"
+        android:fontFamily="@font/lato"
+        android:textFontWeight="@integer/bold"
+        android:textSize="16sp"
         android:layout_marginEnd="10dp"
         android:layout_width="80dp"
         android:layout_height="match_parent"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/icon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/icon"
         tools:text="R$ 0,00" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

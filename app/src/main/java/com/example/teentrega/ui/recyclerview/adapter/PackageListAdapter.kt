@@ -18,7 +18,7 @@ class PackageListAdapter (private val context: Context, private val packages: Li
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun link(product: PackageInfo) {
             itemView.findViewById<TextView>(R.id.name).text = product.packageName
-            itemView.findViewById<TextView>(R.id.price).text = product.price
+            itemView.findViewById<TextView>(R.id.price).text = "R$ ${product.price}"
 
             val icon = itemView.findViewById<ImageView>(R.id.icon)
             if (product.type == PackageType.RECEIVE) {
@@ -31,18 +31,18 @@ class PackageListAdapter (private val context: Context, private val packages: Li
             val shippingText = itemView.findViewById<TextView>(R.id.shipping_type)
             when (product.shipping) {
                 ShippingType.ECONOMIC -> {
-                    shippingText.text = R.string.economic.toString()
+                    shippingText.text = shippingText.context.getString(R.string.economic)
                     shippingText.setTextColor(ContextCompat.getColor(
                         shippingText.context, R.color.text_economic)
                     )
-                    icon.setImageResource(R.drawable.economic)
+                    shippingIcon.setImageResource(R.drawable.economic)
                 }
                 ShippingType.EXPRESS -> {
-                    shippingText.text = R.string.express.toString()
+                    shippingText.text = shippingText.context.getString(R.string.express)
                     shippingText.setTextColor(ContextCompat.getColor(
                         shippingText.context, R.color.text_express)
                     )
-                    icon.setImageResource(R.drawable.express)
+                    shippingIcon.setImageResource(R.drawable.express)
                 }
                 else -> {
                     shippingText.text = ""
@@ -50,11 +50,7 @@ class PackageListAdapter (private val context: Context, private val packages: Li
                 }
             }
 
-            val date = itemView.findViewById<TextView>(R.id.date)
-            date.text = product.date
-            date.setTextColor(ContextCompat.getColor(
-                date.context, R.color.text_placeholders)
-            )
+            itemView.findViewById<TextView>(R.id.date).text = product.date
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
