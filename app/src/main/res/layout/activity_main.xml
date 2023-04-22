@@ -15,17 +15,16 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/logo"
+        app:srcCompat="@drawable/logo"
         android:contentDescription="logo" />
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Bem vindo!"
+        android:text="@string/welcome"
         android:textAlignment="center"
         android:layout_marginTop="100dp"
-        android:fontFamily="@font/lato"
         android:textColor="@color/highlight"
         android:textFontWeight="@integer/bold"
         android:textSize="20sp"
@@ -43,13 +42,12 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title"
-        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt blandit eros ac ullamcorper." />
+        android:text="@string/app_description" />
 
     <Button
-        android:id="@+id/button_create_account"
+        android:id="@+id/button_register"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textFontWeight="@integer/regular"
         android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@id/button_login"
@@ -57,22 +55,18 @@
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/round"
         android:textAllCaps="false"
-        android:fontFamily="@font/lato"
-        tools:text="Criar uma nova conta" />
+        android:text="@string/create_new_account" />
 
-    <Button
-        android:id="@+id/button_login"
+    <Button android:id="@+id/button_login"
+        style="@style/Button.WithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="16dp"
-        android:fontFamily="@font/lato"
         android:textFontWeight="@integer/bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@android:color/transparent"
-        android:textColor="@color/highlight"
         android:textAllCaps="false"
-        tools:text="Já tenho uma conta " />
+        android:text="@string/already_have_account" />
 </androidx.constraintlayout.widget.ConstraintLayout>

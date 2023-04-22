@@ -33,12 +33,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         tools:srcCompat="@drawable/express"
-        tools:text="bolt"
         android:contentDescription="shipping type icon" />
 
     <TextView
         android:id="@+id/shipping_type"
-        android:fontFamily="@font/lato"
         android:textFontWeight="@integer/bold"
         android:layout_marginStart="3dp"
         android:layout_width="0dp"
@@ -51,7 +49,6 @@
 
     <TextView
         android:id="@+id/name"
-        android:fontFamily="@font/lato"
         android:textFontWeight="@integer/bold"
         android:layout_marginStart="10dp"
         android:textSize="20sp"
@@ -64,8 +61,6 @@
 
     <TextView
         android:id="@+id/date"
-        android:fontFamily="@font/lato"
-        android:textFontWeight="@integer/regular"
         android:layout_width="0dp"
         android:textSize="14sp"
         android:textColor="@color/text_placeholders"
@@ -78,7 +73,6 @@
 
     <TextView
         android:id="@+id/price"
-        android:fontFamily="@font/lato"
         android:textFontWeight="@integer/bold"
         android:textSize="16sp"
         android:layout_marginEnd="10dp"
