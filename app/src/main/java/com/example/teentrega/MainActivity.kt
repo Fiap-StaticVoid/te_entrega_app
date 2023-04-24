@@ -1,18 +1,18 @@
 package com.example.teentrega
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import com.example.teentrega.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        val buttonEnter = findViewById<Button>(R.id.button_register)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        buttonEnter.setOnClickListener {
+        binding.buttonLogin.setOnClickListener {
             val intent = Intent(this, CreateAccount::class.java)
             startActivity(intent)
         }

@@ -2,61 +2,63 @@ package com.example.teentrega.ui.recyclerview.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.teentrega.R
+import com.example.teentrega.databinding.PackageInformationBinding
 import com.example.teentrega.model.PackageInfo
 import com.example.teentrega.model.PackageType
 import com.example.teentrega.model.ShippingType
 
 class PackageListAdapter (private val context: Context, private val packages: List<PackageInfo> ) : RecyclerView.Adapter<PackageListAdapter.ViewHolder >() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun link(product: PackageInfo) {
-            itemView.findViewById<TextView>(R.id.name).text = product.packageName
-            itemView.findViewById<TextView>(R.id.price).text = "R$ ${product.price}"
+    class ViewHolder(binding: PackageInformationBinding) : RecyclerView.ViewHolder(binding.root) {
 
-            val icon = itemView.findViewById<ImageView>(R.id.icon)
+        private val packageName = binding.name
+        private val price = binding.price
+        private val icon = binding.icon
+        private val shippingType = binding.shippingType
+        private val shippingTypeIcon = binding.shippingTypeIcon
+        private val date = binding.date
+
+        fun link(product: PackageInfo) {
+            packageName.text = product.packageName
+            price.text = "R$ ${product.price}"
+
             if (product.type == PackageType.RECEIVE) {
                 icon.setImageResource(R.drawable.receive)
             } else {
                 icon.setImageResource(R.drawable.send)
             }
 
-            val shippingIcon = itemView.findViewById<ImageView>(R.id.shipping_type_icon)
-            val shippingText = itemView.findViewById<TextView>(R.id.shipping_type)
             when (product.shipping) {
                 ShippingType.ECONOMIC -> {
-                    shippingText.text = shippingText.context.getString(R.string.economic)
-                    shippingText.setTextColor(ContextCompat.getColor(
-                        shippingText.context, R.color.text_economic)
+                    shippingType.text = shippingType.context.getString(R.string.economic)
+                    shippingType.setTextColor(ContextCompat.getColor(
+                        shippingType.context, R.color.text_economic)
                     )
-                    shippingIcon.setImageResource(R.drawable.economic)
+                    shippingTypeIcon.setImageResource(R.drawable.economic)
                 }
                 ShippingType.EXPRESS -> {
-                    shippingText.text = shippingText.context.getString(R.string.express)
-                    shippingText.setTextColor(ContextCompat.getColor(
-                        shippingText.context, R.color.text_express)
+                    shippingType.text = shippingType.context.getString(R.string.express)
+                    shippingType.setTextColor(ContextCompat.getColor(
+                        shippingType.context, R.color.text_express)
                     )
-                    shippingIcon.setImageResource(R.drawable.express)
+                    shippingTypeIcon.setImageResource(R.drawable.express)
                 }
                 else -> {
-                    shippingText.text = ""
-                    shippingIcon.alpha = 0f
+                    shippingType.text = ""
+                    shippingTypeIcon.alpha = 0f
                 }
             }
 
-            itemView.findViewById<TextView>(R.id.date).text = product.date
+            date.text = product.date
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflater = LayoutInflater.from(context)
-        val view = inflater.inflate(R.layout.package_information, parent, false)
-        return ViewHolder(view)
+        val binding = PackageInformationBinding.inflate(LayoutInflater.from(context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
