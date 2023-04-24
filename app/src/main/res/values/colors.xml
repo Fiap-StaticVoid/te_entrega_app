@@ -3,10 +3,9 @@
     <color name="highlight">#354AE7</color>
     <color name="text_main">#000000</color>
     <color name="text_placeholders">#787878</color>
-    <color name="text_white">#FFFFFF</color>
-    <color name="text_black">#000000</color>
     <color name="text_express">#FFB800</color>
     <color name="text_economic">#1AC020</color>
-    <color name="background_slightly_blue">#F2F3F6</color>
-    <color name="background_dark_blue">#3E404F</color>
+    <color name="background_secondary">#F2F3F6</color>
+    <color name="background_buttons">#3E404F</color>
+    <color name="background">#FFFFFF</color>
 </resources>

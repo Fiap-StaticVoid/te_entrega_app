@@ -45,10 +45,10 @@
     </string>
     <string name="express">Entrega relâmpago</string>
     <string name="economic">Maior economia</string>
-    <string name="create_new_account_in_enter"><font color="black">Não tenho uma conta.</font> Criar nova conta</string>
+    <string name="dont_have_account">Não tenho uma conta.</string>
     <string name="enter">Entrar</string>
-    <string name="create_new_account">Criar uma nova conta</string>
-    <string name="already_have_account">Já tenho uma conta</string>
+    <string name="create">Criar</string>
+    <string name="already_have_account">Já tenho uma conta.</string>
     <string name="app_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt blandit eros ac ullamcorper.</string>
     <string name="welcome">Bem vindo!</string>
     <string name="register_title_1">Digite os seus dados</string>
