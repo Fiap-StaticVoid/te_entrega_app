@@ -1,17 +1,19 @@
-package com.example.teentrega
+package com.example.teentrega.ui.activity
 
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import androidx.appcompat.app.AppCompatActivity
-import com.example.teentrega.databinding.ActivityCreateAccountBinding
+import com.example.teentrega.R
+import com.example.teentrega.databinding.ActivityLoginBinding
 
-class CreateAccount : AppCompatActivity() {
+
+class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding = ActivityCreateAccountBinding.inflate(layoutInflater)
+        val binding = ActivityLoginBinding.inflate(layoutInflater)
 
         val spannable = SpannableString("${getString(R.string.dont_have_account)} ${getString(R.string.create)}")
         spannable.setSpan(

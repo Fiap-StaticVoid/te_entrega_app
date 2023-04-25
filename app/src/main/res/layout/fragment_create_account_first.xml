@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.fragment.CreateAccountFirstFragment">
+
+    <TextView android:id="@+id/title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/highlight"
+        android:textFontWeight="@integer/bold"
+        android:text="@string/register_title_1" />
+
+    <com.google.android.material.textfield.TextInputLayout android:id="@+id/phone_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        android:ems="10"
+        android:inputType="phone"
+        android:autofillHints="phoneNumberDevice"
+        android:hint="@string/register_input_phone_number">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:maxLength="11"
+            android:inputType="phone" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button android:id="@+id/button_forgot_password"
+        style="@style/Button.WithoutBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textAlignment="textEnd"
+        android:minHeight="0dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="20dp"
+        android:textFontWeight="@integer/bold"
+        android:text="@string/verify"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@id/phone_number"
+        app:layout_constraintTop_toBottomOf="@id/phone_number" />
+</androidx.constraintlayout.widget.ConstraintLayout>

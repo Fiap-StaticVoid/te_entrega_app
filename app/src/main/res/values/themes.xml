@@ -19,4 +19,9 @@
         <item name="android:background">@android:color/transparent</item>
         <item name="android:textColor">@color/highlight</item>
     </style>
+
+    <style name="Button.Default" parent="Base.Theme.TeEntrega">
+        <item name="android:background">@android:color/background_dark</item>
+        <item name="android:textColor">@color/background</item>
+    </style>
 </resources>

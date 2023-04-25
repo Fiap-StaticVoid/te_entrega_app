@@ -1,11 +1,13 @@
-package com.example.teentrega
+package com.example.teentrega.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.teentrega.R
 import com.example.teentrega.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -19,11 +21,19 @@ class MainActivity : AppCompatActivity() {
             0,19, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
         binding.buttonLogin.text = spannable
 
-        setContentView(binding.root)
-
         binding.buttonLogin.setOnClickListener {
-            val intent = Intent(this, CreateAccount::class.java)
+            Log.i("MAIN_ACTIVITY", "login")
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+
+        binding.buttonRegister.setOnClickListener {
+            Log.i("MAIN_ACTIVITY", "register")
+            val intent = Intent(this, CreateAccountActivity::class.java)
+            startActivity(intent)
+        }
+
+        setContentView(binding.root)
+
     }
 }
