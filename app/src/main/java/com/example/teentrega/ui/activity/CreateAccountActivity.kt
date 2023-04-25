@@ -5,12 +5,15 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.example.teentrega.R
 import com.example.teentrega.databinding.ActivityCreateAccountBinding
-import com.example.teentrega.ui.fragment.CreateAccountFirstFragment
-import com.example.teentrega.ui.fragment.CreateAccountSecondFragment
 
 class CreateAccountActivity : AppCompatActivity() {
+
+    private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -23,14 +26,19 @@ class CreateAccountActivity : AppCompatActivity() {
 
         binding.buttonLogin.text = spannable
 
-
-        val firstFragment = CreateAccountFirstFragment()
-        supportFragmentManager.beginTransaction().add(binding.createAccountFragment.id, firstFragment).commit()
-
+        val navHostFragment = supportFragmentManager.findFragmentById(binding.navHostFragment.id) as NavHostFragment
+        navController = navHostFragment.navController
 
         binding.buttonContinue.setOnClickListener {
-            val nextFragment = CreateAccountSecondFragment()
-            supportFragmentManager.beginTransaction().addToBackStack(null).replace(binding.createAccountFragment.id, nextFragment).commit()
+
+            val nextFragment = when (navController.currentDestination?.id) {
+                R.id.first_fragment -> R.id.second_fragment
+                else -> null
+            }
+
+            nextFragment?.let {
+                navController.navigate(it)
+            }
         }
 
         setContentView(binding.root)

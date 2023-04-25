@@ -16,21 +16,17 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp">
 
-            <androidx.fragment.app.FragmentContainerView
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/button_login"
-                tools:layout="@layout/fragment_create_account_first"
-                android:id="@+id/createAccountFragment"
+            <androidx.fragment.app.FragmentContainerView android:id="@+id/nav_host_fragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/nav_graph" />
 
             <Button android:id="@+id/button_continue"
                 style="@style/Button.Default"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 app:layout_constraintBottom_toTopOf="@id/button_login"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +36,6 @@
 
             <Button android:id="@+id/button_login"
                 style="@style/Button.WithoutBackground"
-                android:paddingVertical="10dp"
                 android:layout_width="0dp"
                 android:minHeight="10dp"
                 android:layout_height="wrap_content"

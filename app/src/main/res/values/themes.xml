@@ -1,7 +1,5 @@
 <resources>
-    <!-- Base application theme. -->
     <style name="Base.Theme.TeEntrega" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/background_buttons</item>
         <item name="colorPrimaryDark">@color/background_buttons</item>
         <item name="android:textColor">@color/text_main</item>
@@ -10,14 +8,23 @@
         <item name="fontFamily">@font/lato</item>
         <item name="android:fontFamily">@font/lato</item>
         <item name="android:textStyle">normal</item>
+        <item name="hintTextColor">@color/text_main</item>
+        <item name="android:textColorHint">@color/text_placeholders</item>
         <item name="android:fontWeight">@integer/regular</item>
     </style>
 
     <style name="Theme.TeEntrega" parent="Base.Theme.TeEntrega" />
 
     <style name="Button.WithoutBackground" parent="Base.Theme.TeEntrega">
+        <item name="android:paddingVertical">10dp</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:textColor">@color/highlight</item>
+    </style>
+
+    <style name="Input.Contrast" parent="Base.Theme.TeEntrega">
+        <item name="colorPrimary">@color/text_main</item>
+        <item name="colorControlNormal">@color/text_economic</item>
+        <item name="colorControlActivated">@color/text_express</item>
     </style>
 
     <style name="Button.Default" parent="Base.Theme.TeEntrega">
