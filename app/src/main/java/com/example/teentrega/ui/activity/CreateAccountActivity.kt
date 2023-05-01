@@ -1,5 +1,6 @@
 package com.example.teentrega.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -29,15 +30,27 @@ class CreateAccountActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(binding.navHostFragment.id) as NavHostFragment
         navController = navHostFragment.navController
 
-        binding.buttonContinue.setOnClickListener {
+        binding.buttonContinue.setOnClickListener { it ->
 
-            val nextFragment = when (navController.currentDestination?.id) {
-                R.id.first_fragment -> R.id.second_fragment
-                else -> null
-            }
+            if (navController.currentDestination?.id != R.id.fifth_fragment) {
+                val nextFragment = when (navController.currentDestination?.id) {
+                    R.id.first_fragment -> R.id.second_fragment
+                    R.id.second_fragment -> R.id.third_fragment
+                    R.id.third_fragment -> R.id.fourth_fragment
+                    else -> R.id.fifth_fragment
+                }
 
-            nextFragment?.let {
-                navController.navigate(it)
+                nextFragment.let {
+                    navController.navigate(it)
+                }
+
+                if (it.id == R.id.fifth_fragment) {
+                    binding.buttonContinue.text = getString(R.string.finish)
+                }
+            } else {
+                val intent = Intent(this, FinishAcountCreationActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
             }
         }
 

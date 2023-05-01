@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ui.fragment.createaccount.CreateAccountSecondFragment">
+    tools:context=".ui.fragment.createaccount.CreateAccountFifthFragment">
 
     <TextView android:id="@+id/title"
         app:layout_constraintTop_toTopOf="parent"
@@ -15,9 +15,10 @@
         android:textSize="20sp"
         android:textColor="@color/highlight"
         android:textFontWeight="@integer/bold"
-        android:text="@string/register_title_2" />
+        android:text="@string/register_title_5" />
 
-    <com.google.android.material.textfield.TextInputLayout android:id="@+id/password"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/cep"
         style="@style/Input.Contrast"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -26,10 +27,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title"
         android:ems="10"
-        app:passwordToggleEnabled="true"
-        android:inputType="textPassword"
-        android:autofillHints="password"
-        android:hint="@string/register_input_password">
+        android:inputType="number"
+        android:hint="@string/register_input_cep">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -40,23 +39,22 @@
             android:background="@android:color/transparent"
             android:ems="10"
             android:maxLength="11"
-            android:inputType="textPassword" />
+            android:inputType="number" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout android:id="@+id/confirm_password"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/number"
         style="@style/Input.Contrast"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password"
-        app:passwordToggleEnabled="true"
+        app:layout_constraintTop_toBottomOf="@id/cep"
         android:ems="10"
-        android:inputType="textPassword"
-        android:autofillHints="password"
-        android:hint="@string/register_input_confirm_password">
+        android:inputType="number"
+        android:hint="@string/register_input_number">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -67,8 +65,31 @@
             android:background="@android:color/transparent"
             android:ems="10"
             android:maxLength="11"
-            android:inputType="textPassword" />
-
+            android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/extra"
+        style="@style/Input.Contrast"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/number"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/register_input_extra">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:maxLength="11"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

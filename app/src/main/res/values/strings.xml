@@ -2,8 +2,6 @@
     <string name="app_name">Te Entrega</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
@@ -56,13 +54,27 @@
     <string name="register_title_2">Escolha uma senha</string>
     <string name="register_title_3">Qual o seu nome?</string>
     <string name="register_title_4">Qual o seu CPF?</string>
+    <string name="create_an_account">Criar uma conta</string>
     <string name="register_title_5">Qual o seu endereço?</string>
     <string name="register_input_phone_number">Digite o seu número de telefone</string>
     <string name="register_input_password">Digite a sua senha</string>
     <string name="register_input_confirm_password">Confirme a sua senha</string>
+    <string name="register_input_cpf">Digite o seu CPF</string>
+    <string name="register_input_cep">Digite o CEP</string>
+    <string name="register_input_number">Digite o número</string>
+    <string name="register_input_extra">Digite o complemento, se houver</string>
     <string name="forgot_password">Esqueci a senha</string>
     <string name="verify">Verificar</string>
     <string name="proceed">Continuar</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="register_input_name">Digite o seu nome</string>
+    <string name="register_input_last_name">Digite o seu sobrenome</string>
+    <string name="finish">Finalizar</string>
+    <string name="created_account_description">Que tal enviar o seu\nprimeiro pacote?</string>
+    <string name="created_account">Conta criada!</string>
+    <string name="checkmark">A blue checkmark</string>
+    <string name="take_to_homepage">Me leve a pagina inicial</string>
+    <string name="send_package">Enviar um pacote</string>
+
 </resources>

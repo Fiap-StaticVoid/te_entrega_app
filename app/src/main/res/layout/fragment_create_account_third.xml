@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ui.fragment.createaccount.CreateAccountSecondFragment">
+    tools:context=".ui.fragment.createaccount.CreateAccountThirdFragment">
 
     <TextView android:id="@+id/title"
         app:layout_constraintTop_toTopOf="parent"
@@ -15,9 +15,9 @@
         android:textSize="20sp"
         android:textColor="@color/highlight"
         android:textFontWeight="@integer/bold"
-        android:text="@string/register_title_2" />
+        android:text="@string/register_title_3" />
 
-    <com.google.android.material.textfield.TextInputLayout android:id="@+id/password"
+    <com.google.android.material.textfield.TextInputLayout android:id="@+id/first_name"
         style="@style/Input.Contrast"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -26,10 +26,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title"
         android:ems="10"
-        app:passwordToggleEnabled="true"
-        android:inputType="textPassword"
-        android:autofillHints="password"
-        android:hint="@string/register_input_password">
+        android:inputType="textPersonName"
+        android:autofillHints="personGivenName"
+        android:hint="@string/register_input_name">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -39,24 +38,22 @@
             app:layout_constraintTop_toBottomOf="parent"
             android:background="@android:color/transparent"
             android:ems="10"
-            android:maxLength="11"
-            android:inputType="textPassword" />
+            android:inputType="textPersonName" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout android:id="@+id/confirm_password"
+    <com.google.android.material.textfield.TextInputLayout android:id="@+id/last_name"
         style="@style/Input.Contrast"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password"
-        app:passwordToggleEnabled="true"
+        app:layout_constraintTop_toBottomOf="@id/first_name"
         android:ems="10"
-        android:inputType="textPassword"
-        android:autofillHints="password"
-        android:hint="@string/register_input_confirm_password">
+        android:inputType="textPersonName"
+        android:autofillHints="personFamilyName"
+        android:hint="@string/register_input_last_name">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -66,8 +63,7 @@
             app:layout_constraintTop_toBottomOf="parent"
             android:background="@android:color/transparent"
             android:ems="10"
-            android:maxLength="11"
-            android:inputType="textPassword" />
+            android:inputType="textPersonName" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
