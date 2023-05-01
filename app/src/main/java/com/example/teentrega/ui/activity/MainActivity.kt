@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.teentrega.R
 import com.example.teentrega.databinding.ActivityMainBinding
@@ -21,13 +22,15 @@ class MainActivity : AppCompatActivity() {
         binding.buttonLogin.text = spannable
 
         binding.buttonLogin.setOnClickListener {
+            Log.i("MAIN_ACTIVITY", "login")
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
         binding.buttonRegister.setOnClickListener {
-            val intent = Intent(this, CreateAccountActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            Log.i("MAIN_ACTIVITY", "register")
+//            val intent = Intent(this, CreateAccountActivity::class.java)
+            val intent = Intent(this, PaginaEnvioActivity::class.java)
             startActivity(intent)
         }
 
