@@ -1,5 +1,6 @@
 package com.example.teentrega.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -20,6 +21,11 @@ class LoginActivity : AppCompatActivity() {
             ForegroundColorSpan(getColor(R.color.text_main)),
             0,20, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
         binding.buttonLogin.text = spannable
+        binding.buttonLogin.setOnClickListener {
+            val intent = Intent(this, CreateAccountActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+        }
 
         setContentView(binding.root)
     }

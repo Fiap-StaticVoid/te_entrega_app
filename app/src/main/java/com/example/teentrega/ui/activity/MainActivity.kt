@@ -29,7 +29,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.buttonRegister.setOnClickListener {
             Log.i("MAIN_ACTIVITY", "register")
-            val intent = Intent(this, CreateAccountActivity::class.java)
+//            val intent = Intent(this, CreateAccountActivity::class.java)
+            val intent = Intent(this, PaginaEnvioActivity::class.java)
             startActivity(intent)
         }
 
