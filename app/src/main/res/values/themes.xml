@@ -15,20 +15,42 @@
 
     <style name="Theme.TeEntrega" parent="Base.Theme.TeEntrega" />
 
-    <style name="Button.WithoutBackground" parent="Base.Theme.TeEntrega">
+    <style name="Button.WithoutBackground" parent="Theme.TeEntrega">
+        <item name="textAllCaps">false</item>
         <item name="android:paddingVertical">10dp</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:textColor">@color/highlight</item>
+        <item name="android:textFontWeight">@integer/bold</item>
+        <item name="minHeight">10dp</item>
     </style>
 
-    <style name="Input.Contrast" parent="Base.Theme.TeEntrega">
+    <style name="Input.Contrast" parent="Theme.TeEntrega">
         <item name="colorPrimary">@color/text_main</item>
-        <item name="colorControlNormal">@color/text_economic</item>
-        <item name="colorControlActivated">@color/text_express</item>
     </style>
 
-    <style name="Button.Default" parent="Base.Theme.TeEntrega">
-        <item name="android:background">@android:color/background_dark</item>
-        <item name="android:textColor">@color/background</item>
+    <style name="Button.Default" parent="Theme.TeEntrega">
+        <item name="textAllCaps">false</item>
+        <item name="android:background">@drawable/round</item>
+        <item name="android:textColor">@color/text_main</item>
+    </style>
+
+    <style name="Button.WithLine.Active" parent="Button.WithLine.Inactive">
+        <item name="android:background">@drawable/line</item>
+    </style>
+
+    <style name="Button.WithLine.Inactive" parent="Theme.TeEntrega">
+        <item name="materialThemeOverlay">@style/OverlayColorPrimary</item>
+        <item name="colorAccent">@color/text_main</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:paddingVertical">10dp</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/text_main</item>
+        <item name="android:textFontWeight">@integer/bold</item>
+        <item name="android:layout_marginHorizontal">20dp</item>
+    </style>
+
+    <style name="OverlayColorPrimary">
+        <item name="colorPrimary">@color/text_main</item>
+        <item name="colorPrimaryDark">@color/text_main</item>
     </style>
 </resources>

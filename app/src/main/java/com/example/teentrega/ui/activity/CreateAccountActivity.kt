@@ -32,23 +32,23 @@ class CreateAccountActivity : AppCompatActivity() {
 
         binding.buttonContinue.setOnClickListener { it ->
 
-            if (navController.currentDestination?.id != R.id.fifth_fragment) {
+            if (navController.currentDestination?.id != R.id.create_account_fragment_5) {
                 val nextFragment = when (navController.currentDestination?.id) {
-                    R.id.first_fragment -> R.id.second_fragment
-                    R.id.second_fragment -> R.id.third_fragment
-                    R.id.third_fragment -> R.id.fourth_fragment
-                    else -> R.id.fifth_fragment
+                    R.id.create_account_fragment_1 -> R.id.create_account_fragment_2
+                    R.id.create_account_fragment_2 -> R.id.create_account_fragment_3
+                    R.id.create_account_fragment_3 -> R.id.create_account_fragment_4
+                    else -> R.id.create_account_fragment_5
                 }
 
                 nextFragment.let {
                     navController.navigate(it)
                 }
 
-                if (it.id == R.id.fifth_fragment) {
+                if (it.id == R.id.create_account_fragment_5) {
                     binding.buttonContinue.text = getString(R.string.finish)
                 }
             } else {
-                val intent = Intent(this, FinishAcountCreationActivity::class.java)
+                val intent = Intent(this, FinishAccountCreationActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
             }

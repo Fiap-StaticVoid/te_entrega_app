@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="highlight">#6B7BF6</color>
-    <color name="text_main">#FFFFFF</color>
-    <color name="text_placeholders">#A6A6A6</color>
-    <color name="text_express">#FFD56A</color>
-    <color name="text_economic">#7DE88C</color>
-    <color name="background_secondary">#282B36</color>
-    <color name="background_buttons">#282B36</color>
-    <color name="background">#1A1A1A</color>
+    <color name="highlight">#FF6B7BF6</color>
+    <color name="text_main">#FFFFFFFF</color>
+    <color name="text_placeholders">#FFA6A6A6</color>
+    <color name="text_express">#FFFFD56A</color>
+    <color name="text_economic">#FF7DE88C</color>
+    <color name="background_secondary">#FF282B36</color>
+    <color name="background_buttons">#FF282B36</color>
+    <color name="background">#FF1A1A1A</color>
 </resources>

@@ -13,7 +13,10 @@
         android:theme="@style/Theme.TeEntrega"
         tools:targetApi="31">
         <activity
-            android:name=".ui.activity.FinishAcountCreationActivity"
+            android:name=".ui.activity.DashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.FinishAccountCreationActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activity.LoginActivity"

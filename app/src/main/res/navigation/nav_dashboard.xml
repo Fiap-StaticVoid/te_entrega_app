@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_dashboard"
+    app:startDestination="@id/send_fragment">
+
+    <fragment
+        android:id="@+id/send_fragment"
+        android:name="com.example.teentrega.ui.fragment.dashboard.DashboardSendFragment"
+        tools:layout="@layout/fragment_dashboard_send">
+    </fragment>
+
+    <fragment
+        android:id="@+id/tracking_fragment"
+        android:name="com.example.teentrega.ui.fragment.dashboard.DashboardTrackingFragment"
+        tools:layout="@layout/fragment_dashboard_tracking">
+    </fragment>
+</navigation>

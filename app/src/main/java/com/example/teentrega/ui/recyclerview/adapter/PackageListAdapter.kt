@@ -26,13 +26,13 @@ class PackageListAdapter (private val context: Context, private val packages: Li
             packageName.text = product.packageName
             price.text = "R$ ${product.price}"
 
-            if (product.type == PackageType.RECEIVE) {
+            if (product.packageType == PackageType.RECEIVE) {
                 icon.setImageResource(R.drawable.receive)
             } else {
                 icon.setImageResource(R.drawable.send)
             }
 
-            when (product.shipping) {
+            when (product.shippingType) {
                 ShippingType.ECONOMIC -> {
                     shippingType.text = shippingType.context.getString(R.string.economic)
                     shippingType.setTextColor(ContextCompat.getColor(

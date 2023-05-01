@@ -1,8 +1,8 @@
 package com.example.teentrega.model
 
 class PackageInfo (
-    val shipping: ShippingType,
-    val type: PackageType,
+    val shippingType: ShippingType,
+    val packageType: PackageType,
     val packageName: String,
     val date: String,
     val price: String)

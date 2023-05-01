@@ -3,53 +3,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/first_fragment">
+    app:startDestination="@id/create_account_fragment_1">
 
-    <action android:id="@+id/action_global_first_fragment"
-        app:destination="@id/first_fragment"/>
+    <action android:id="@+id/action_global_create_account_fragment_1"
+        app:destination="@id/create_account_fragment_1"/>
 
     <fragment
-        android:id="@+id/first_fragment"
+        android:id="@+id/create_account_fragment_1"
         android:name="com.example.teentrega.ui.fragment.createaccount.CreateAccountFirstFragment"
         android:label="@string/create_an_account"
         tools:layout="@layout/fragment_create_account_first">
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/second_fragment" />
+            app:destination="@id/create_account_fragment_2" />
     </fragment>
 
     <fragment
-        android:id="@+id/second_fragment"
+        android:id="@+id/create_account_fragment_2"
         android:name="com.example.teentrega.ui.fragment.createaccount.CreateAccountSecondFragment"
         android:label="@string/create_an_account"
         tools:layout="@layout/fragment_create_account_second">
         <action
             android:id="@+id/action_SecondFragment_to_ThirdFragment"
-            app:destination="@id/third_fragment" />
+            app:destination="@id/create_account_fragment_3" />
     </fragment>
 
     <fragment
-        android:id="@+id/third_fragment"
+        android:id="@+id/create_account_fragment_3"
         android:name="com.example.teentrega.ui.fragment.createaccount.CreateAccountThirdFragment"
         android:label="@string/create_an_account"
         tools:layout="@layout/fragment_create_account_third">
         <action
             android:id="@+id/action_ThirdFragment_to_FourthFragment"
-            app:destination="@id/fourth_fragment" />
+            app:destination="@id/create_account_fragment_4" />
     </fragment>
 
     <fragment
-        android:id="@+id/fourth_fragment"
+        android:id="@+id/create_account_fragment_4"
         android:name="com.example.teentrega.ui.fragment.createaccount.CreateAccountFourthFragment"
         android:label="@string/create_an_account"
         tools:layout="@layout/fragment_create_account_fourth">
         <action
             android:id="@+id/action_FourthFragment_to_FifthFragment"
-            app:destination="@id/fifth_fragment" />
+            app:destination="@id/create_account_fragment_5" />
     </fragment>
 
     <fragment
-        android:id="@+id/fifth_fragment"
+        android:id="@+id/create_account_fragment_5"
         android:name="com.example.teentrega.ui.fragment.createaccount.CreateAccountFifthFragment"
         android:label="@string/create_an_account"
         tools:layout="@layout/fragment_create_account_fifth">

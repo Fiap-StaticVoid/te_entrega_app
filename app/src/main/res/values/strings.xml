@@ -76,5 +76,9 @@
     <string name="checkmark">A blue checkmark</string>
     <string name="take_to_homepage">Me leve a pagina inicial</string>
     <string name="send_package">Enviar um pacote</string>
+    <string name="tracking">Rastreio</string>
+    <string name="send">Envio</string>
+    <string name="dashboard_input_address">Para onde?</string>
+    <string name="last_shipments">Seus últimos envios</string>
 
 </resources>
