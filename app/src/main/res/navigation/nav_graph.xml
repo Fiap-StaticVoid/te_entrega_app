@@ -10,8 +10,8 @@
 
     <fragment
         android:id="@+id/first_fragment"
-        android:name="com.example.teentrega.ui.fragment.CreateAccountFirstFragment"
-        android:label="@string/first_fragment_label"
+        android:name="com.example.teentrega.ui.fragment.createaccount.CreateAccountFirstFragment"
+        android:label="@string/create_an_account"
         tools:layout="@layout/fragment_create_account_first">
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
@@ -20,8 +20,38 @@
 
     <fragment
         android:id="@+id/second_fragment"
-        android:name="com.example.teentrega.ui.fragment.CreateAccountSecondFragment"
-        android:label="@string/second_fragment_label"
+        android:name="com.example.teentrega.ui.fragment.createaccount.CreateAccountSecondFragment"
+        android:label="@string/create_an_account"
         tools:layout="@layout/fragment_create_account_second">
+        <action
+            android:id="@+id/action_SecondFragment_to_ThirdFragment"
+            app:destination="@id/third_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/third_fragment"
+        android:name="com.example.teentrega.ui.fragment.createaccount.CreateAccountThirdFragment"
+        android:label="@string/create_an_account"
+        tools:layout="@layout/fragment_create_account_third">
+        <action
+            android:id="@+id/action_ThirdFragment_to_FourthFragment"
+            app:destination="@id/fourth_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fourth_fragment"
+        android:name="com.example.teentrega.ui.fragment.createaccount.CreateAccountFourthFragment"
+        android:label="@string/create_an_account"
+        tools:layout="@layout/fragment_create_account_fourth">
+        <action
+            android:id="@+id/action_FourthFragment_to_FifthFragment"
+            app:destination="@id/fifth_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fifth_fragment"
+        android:name="com.example.teentrega.ui.fragment.createaccount.CreateAccountFifthFragment"
+        android:label="@string/create_an_account"
+        tools:layout="@layout/fragment_create_account_fifth">
     </fragment>
 </navigation>

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ui.fragment.createaccount.CreateAccountFirstFragment">
+    tools:context=".ui.fragment.createaccount.CreateAccountFourthFragment">
 
     <TextView android:id="@+id/title"
         app:layout_constraintTop_toTopOf="parent"
@@ -15,9 +15,9 @@
         android:textSize="20sp"
         android:textColor="@color/highlight"
         android:textFontWeight="@integer/bold"
-        android:text="@string/register_title_1" />
+        android:text="@string/register_title_4" />
 
-    <com.google.android.material.textfield.TextInputLayout android:id="@+id/phone_number"
+    <com.google.android.material.textfield.TextInputLayout android:id="@+id/cpf"
         style="@style/Input.Contrast"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -26,9 +26,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title"
         android:ems="10"
-        android:inputType="phone"
-        android:autofillHints="phoneNumberDevice"
-        android:hint="@string/register_input_phone_number">
+        android:inputType="number"
+        android:hint="@string/register_input_cpf">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -39,22 +38,7 @@
             android:background="@android:color/transparent"
             android:ems="10"
             android:maxLength="11"
-            android:inputType="phone" />
+            android:inputType="number" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
-    <Button android:id="@+id/button_forgot_password"
-        style="@style/Button.WithoutBackground"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:textAlignment="textEnd"
-        android:minHeight="0dp"
-        android:paddingTop="3dp"
-        android:paddingBottom="20dp"
-        android:textFontWeight="@integer/bold"
-        android:text="@string/verify"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="@id/phone_number"
-        app:layout_constraintTop_toBottomOf="@id/phone_number" />
 </androidx.constraintlayout.widget.ConstraintLayout>

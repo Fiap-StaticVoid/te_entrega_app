@@ -45,7 +45,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:textAllCaps="false"
-                tools:text="Não tenho uma conta. Criar uma nova conta." />
+                tools:text="Já tenho uma conta. Entrar." />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
