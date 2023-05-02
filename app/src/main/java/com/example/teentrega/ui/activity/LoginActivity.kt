@@ -6,6 +6,7 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.teentrega.R
 import com.example.teentrega.databinding.ActivityLoginBinding
 
@@ -15,6 +16,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val binding = ActivityLoginBinding.inflate(layoutInflater)
+
+        this.window.statusBarColor = ContextCompat.getColor(this, R.color.background)
 
         val spannable = SpannableString("${getString(R.string.dont_have_account)} ${getString(R.string.create)}")
         spannable.setSpan(

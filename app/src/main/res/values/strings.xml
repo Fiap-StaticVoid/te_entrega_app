@@ -84,5 +84,9 @@
     <string name="send">Envio</string>
     <string name="dashboard_input_address">Para onde?</string>
     <string name="last_shipments">Seus últimos envios</string>
+    <string name="profile">Perfil</string>
+    <string name="empty_shipping_history">Você não enviou nada ainda!</string>
+    <string name="empty_shipping_history_description">Seus últimos envios serão\nmostrados aqui.</string>
+    <string name="sad_face">:(</string>
 
 </resources>

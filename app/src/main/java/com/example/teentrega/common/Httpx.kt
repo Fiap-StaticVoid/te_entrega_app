@@ -35,10 +35,10 @@ class Httpx(private val callback: (value: JSONArray) -> Unit) {
             }
         )
     }
-    fun pegar_estados() {
+    fun getStates() {
         this.run("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
     }
-    fun pegar_cidades(estado: String) {
-        this.run("https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estado}/distritos")
+    fun getCities(state: String) {
+        this.run("https://servicodados.ibge.gov.br/api/v1/localidades/estados/${state}/distritos")
     }
 }

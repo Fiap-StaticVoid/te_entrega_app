@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/send"
+        android:icon="@drawable/send"
+        android:id="@+id/send"/>
+    <item android:title="@string/tracking"
+        android:icon="@drawable/track"
+        android:id="@+id/track"/>
+    <item android:title="@string/profile"
+        android:icon="@drawable/profile"
+        android:id="@+id/profile"/>
+</menu>

@@ -1,34 +1,46 @@
 package com.example.teentrega.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.ContextThemeWrapper
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.example.teentrega.R
 import com.example.teentrega.databinding.ActivityDashboardBinding
+import com.example.teentrega.ui.fragment.dashboard.DashboardSendFragment
+import com.example.teentrega.ui.fragment.dashboard.DashboardTrackingFragment
 
 class DashboardActivity : AppCompatActivity() {
 
-    private lateinit var navController: NavController
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dashboard)
 
-        val binding = ActivityDashboardBinding.inflate(layoutInflater)
+        this.window.statusBarColor = ContextCompat.getColor(this, R.color.background)
 
-        val navHostFragment = supportFragmentManager.findFragmentById(binding.navHost.id) as NavHostFragment
-        navController = navHostFragment.navController
+        val extras = intent.extras
 
-        binding.buttonSend.setOnClickListener {
-
-            if (navController.currentDestination?.id == R.id.send_fragment) {
-                val buttonContext = ContextThemeWrapper(binding.buttonSend.context, R.style.Button_WithLine_Active)
-                navController.navigate(R.id.tracking_fragment)
-            } else if (navController.currentDestination?.id == R.id.tracking_fragment) {
-                navController.navigate(R.id.send_fragment)
+        if (extras != null) {
+            if (extras.getBoolean("sendPackage")) {
+                val intent = Intent(this, SendPackageActivity::class.java)
+                startActivity(intent)
             }
         }
+
+        val binding = ActivityDashboardBinding.inflate(layoutInflater)
+        replaceWith(DashboardSendFragment())
+
+        binding.navView.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.send -> replaceWith(DashboardSendFragment())
+                R.id.track -> replaceWith(DashboardTrackingFragment())
+            }
+            return@setOnItemSelectedListener true
+        }
+
+        setContentView(binding.root)
+    }
+
+    private fun replaceWith(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().replace(R.id.nav_host, fragment).commit()
     }
 }
