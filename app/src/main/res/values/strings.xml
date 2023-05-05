@@ -96,6 +96,11 @@
     <string name="done">Prontinho!</string>
     <string name="package_sent_description">Em alguns minutos, um transporte\nchegará para recolher o seu pacote.</string>
     <string name="send_another_package">Enviar outro pacote</string>
+    <string name="dashboard_input_track_code">Insira o código de rastreio</string>
+    <string name="track_package">Rastrear um pacote</string>
+    <string name="ongoing_tracking">Rastreios em andamento</string>
+    <string name="empty_tracking_history_description">Seusrastreios em andamento\nserão mostrados aqui.</string>
+    <string name="empty_tracking_history">Você não está rastreando\nnenhum pacote!</string>
 
 
 </resources>
