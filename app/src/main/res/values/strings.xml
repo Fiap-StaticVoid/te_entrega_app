@@ -90,6 +90,12 @@
     <string name="sad_face">:(</string>
     <string name="send_package_location">Para onde vamos enviar?</string>
     <string name="input_send_package_address">Digite o endereço</string>
+    <string name="send_package_fees">Escolha um frete</string>
+    <string name="send_package_payment_method">Escolha uma forma de pagamento</string>
+    <string name="change">Trocar</string>
+    <string name="done">Prontinho!</string>
+    <string name="package_sent_description">Em alguns minutos, um transporte\nchegará para recolher o seu pacote.</string>
+    <string name="send_another_package">Enviar outro pacote</string>
 
 
 </resources>

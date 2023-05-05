@@ -35,6 +35,14 @@
         <item name="android:textColor">@color/text_main</item>
     </style>
 
+    <style name="Button.PaymentMethod" parent="Theme.TeEntrega">
+        <item name="textAllCaps">false</item>
+        <item name="android:background">@drawable/round_outline</item>
+        <item name="android:drawableLeft">@drawable/mastercard</item>
+        <item name="android:textColor">@color/text_main</item>
+        <item name="materialThemeOverlay">@style/OverlayPrimaryColor.Highlight</item>
+    </style>
+
     <style name="Menu.Default" parent="Theme.TeEntrega">
         <item name="materialThemeOverlay">@style/OverlayPrimaryColor.Highlight</item>
     </style>
@@ -43,5 +51,6 @@
         <item name="colorPrimary">@color/highlight</item>
         <item name="colorPrimaryDark">@color/highlight</item>
     </style>
+
     <style name="OverlayPrimaryColor">OverlayPrimaryColor</style>
 </resources>

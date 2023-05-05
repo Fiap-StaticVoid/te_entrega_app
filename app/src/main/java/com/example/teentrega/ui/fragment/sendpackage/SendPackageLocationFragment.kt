@@ -1,4 +1,4 @@
-package com.example.teentrega.ui.fragment
+package com.example.teentrega.ui.fragment.sendpackage
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,6 +20,7 @@ class SendPackageLocationFragment : Fragment() {
         val binding = FragmentSendPackageLocationBinding.inflate(inflater)
 
         fun update(states: JSONArray) {
+
             val statesList = arrayOf<String>()
 
             for (i in 0 until states.length()) {

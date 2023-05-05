@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ui.fragment.SendPackageLocationFragment">
+    tools:context=".ui.fragment.sendpackage.SendPackageLocationFragment">
 
     <TextView android:id="@+id/title"
         app:layout_constraintTop_toTopOf="parent"

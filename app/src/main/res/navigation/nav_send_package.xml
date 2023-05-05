@@ -2,12 +2,21 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_dashboard"
+    android:id="@+id/nav_send_package"
     app:startDestination="@id/address">
 
     <fragment
         android:id="@+id/address"
-        android:name="com.example.teentrega.ui.fragment.SendPackageLocationFragment"
+        android:name="com.example.teentrega.ui.fragment.sendpackage.SendPackageLocationFragment"
         tools:layout="@layout/fragment_send_package_location">
+        <action
+            android:id="@+id/action_address_to_payment"
+            app:destination="@id/payment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/payment"
+        android:name="com.example.teentrega.ui.fragment.sendpackage.SendPackageFeesFragment"
+        tools:layout="@layout/fragment_send_package_fees">
     </fragment>
 </navigation>

@@ -5,13 +5,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.teentrega.R
-import com.example.teentrega.databinding.ActivityFinishAccountCreationBinding
+import com.example.teentrega.databinding.ActivityFinishSendPackageBinding
 
-class FinishAccountCreationActivity : AppCompatActivity() {
+class FinishSendPackageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding = ActivityFinishAccountCreationBinding.inflate(layoutInflater)
+        val binding = ActivityFinishSendPackageBinding.inflate(layoutInflater)
 
         this.window.statusBarColor = ContextCompat.getColor(this, R.color.background)
 
@@ -21,7 +21,6 @@ class FinishAccountCreationActivity : AppCompatActivity() {
             intent.putExtra("sendPackage", false)
             startActivity(intent)
         }
-
 
         binding.buttonSendPackage.setOnClickListener {
             val intent = Intent(this, DashboardActivity::class.java)

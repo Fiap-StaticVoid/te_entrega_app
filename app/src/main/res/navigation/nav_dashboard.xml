@@ -9,11 +9,17 @@
         android:id="@+id/send_fragment"
         android:name="com.example.teentrega.ui.fragment.dashboard.DashboardSendFragment"
         tools:layout="@layout/fragment_dashboard_send">
+        <action
+            android:id="@+id/action_send_to_tracking"
+            app:destination="@id/tracking_fragment" />
     </fragment>
 
     <fragment
         android:id="@+id/tracking_fragment"
         android:name="com.example.teentrega.ui.fragment.dashboard.DashboardTrackingFragment"
         tools:layout="@layout/fragment_dashboard_tracking">
+        <action
+            android:id="@+id/action_tracking_to_send"
+            app:destination="@id/send_fragment" />
     </fragment>
 </navigation>

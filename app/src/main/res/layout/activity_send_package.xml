@@ -35,8 +35,8 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:layout_marginTop="20dp"
-            android:id="@+id/fragmentContainerView"
-            android:name="com.example.teentrega.ui.fragment.SendPackageLocationFragment"
+            android:id="@+id/nav_host"
+            android:name="com.example.teentrega.ui.fragment.sendpackage.SendPackageLocationFragment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
