@@ -14,7 +14,7 @@ class SendPackageActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_send_package)
+
         val binding = ActivitySendPackageBinding.inflate(layoutInflater)
 
         val navHostFragment = supportFragmentManager.findFragmentById(binding.navHost.id) as NavHostFragment
@@ -40,5 +40,7 @@ class SendPackageActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+
+        setContentView(binding.root)
     }
 }

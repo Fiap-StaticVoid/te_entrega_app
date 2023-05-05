@@ -21,14 +21,16 @@ class SendPackageLocationFragment : Fragment() {
 
         fun update(states: JSONArray) {
 
-            val statesList = arrayOf<String>()
+            var statesList = arrayOf<String>()
 
             for (i in 0 until states.length()) {
-                statesList[i] = states.getJSONObject(i).getString("nome")
+                statesList += states.getJSONObject(i).getString("nome")
             }
+
             val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
                 binding.statesDropdown.context, R.layout.activity_send_package, statesList
             )
+
             binding.statesDropdown.adapter = adapter
         }
 

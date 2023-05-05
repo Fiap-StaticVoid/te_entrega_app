@@ -29,22 +29,20 @@
                 android:textColor="@color/text_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/send_package" />
+                android:text="@string/send" />
 
         </androidx.appcompat.widget.Toolbar>
 
-        <androidx.fragment.app.FragmentContainerView
-            android:layout_marginTop="20dp"
-            android:id="@+id/nav_host"
-            android:name="com.example.teentrega.ui.fragment.sendpackage.SendPackageLocationFragment"
+        <androidx.fragment.app.FragmentContainerView android:id="@+id/nav_host"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_send_package"
+            android:layout_margin="20dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginHorizontal="20dp"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/nav_send_package"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button android:id="@+id/button_continue"
             style="@style/Button.Default"
