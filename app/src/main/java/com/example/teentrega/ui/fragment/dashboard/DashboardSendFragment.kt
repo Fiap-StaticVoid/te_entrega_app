@@ -1,5 +1,6 @@
 package com.example.teentrega.ui.fragment.dashboard
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.teentrega.databinding.FragmentDashboardSendBinding
 import com.example.teentrega.model.PackageInfo
+import com.example.teentrega.ui.activity.SendPackageActivity
 import com.example.teentrega.ui.recyclerview.adapter.PackageListAdapter
 
 
@@ -39,6 +41,11 @@ class DashboardSendFragment : Fragment() {
         )
 
         binding.shipmentsList.adapter = PackageListAdapter(binding.shipmentsList.context, packages)
+
+        binding.addressEditText.setOnClickListener {
+            val intent = Intent(binding.address.context, SendPackageActivity::class.java)
+            startActivity(intent)
+        }
 
         if (packages.size > 0) {
             binding.emptyShipments.visibility = View.GONE

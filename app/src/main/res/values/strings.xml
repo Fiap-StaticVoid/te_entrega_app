@@ -88,5 +88,8 @@
     <string name="empty_shipping_history">Você não enviou nada ainda!</string>
     <string name="empty_shipping_history_description">Seus últimos envios serão\nmostrados aqui.</string>
     <string name="sad_face">:(</string>
+    <string name="send_package_location">Para onde vamos enviar?</string>
+    <string name="input_send_package_address">Digite o endereço</string>
+
 
 </resources>

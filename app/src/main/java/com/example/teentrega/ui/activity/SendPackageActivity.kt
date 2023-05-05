@@ -14,21 +14,7 @@ class SendPackageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_send_package)
         val binding = ActivitySendPackageBinding.inflate(layoutInflater)
-        val fragHeader = FragmentHeaderBinding.inflate(layoutInflater)
 
-        fragHeader.textView.text = "Envio"
-        fun update(states: JSONArray) {
-            val statesList = arrayOf<String>()
 
-            for (i in 0 until states.length()) {
-                statesList[i] = states.getJSONObject(i).getString("nome")
-            }
-            val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
-                this, R.layout.activity_send_package, statesList
-            )
-            binding.spinner.adapter = adapter
-        }
-        val httpx = Httpx(::update)
-        httpx.getStates()
     }
 }
