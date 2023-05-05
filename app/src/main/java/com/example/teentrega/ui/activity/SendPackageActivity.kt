@@ -35,8 +35,8 @@ class SendPackageActivity : AppCompatActivity() {
                     binding.buttonContinue.text = getString(R.string.finish)
                 }
             } else {
-                val intent = Intent(this, FinishAccountCreationActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                val intent = Intent(this, FinishSendPackageActivity::class.java)
+                this@SendPackageActivity.finish()
                 startActivity(intent)
             }
         }

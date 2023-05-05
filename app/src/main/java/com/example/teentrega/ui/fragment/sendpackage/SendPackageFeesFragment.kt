@@ -27,7 +27,7 @@ class SendPackageFeesFragment : Fragment() {
             PackageInfo(ShippingType.NONE, PackageType.SEND, "20:00", "14/05/23", "10.00")
         )
 
-        binding.shippingOptions.adapter= PackageListAdapter(binding.shippingOptions.context, fees)
+        binding.shippingOptions.adapter = PackageListAdapter(binding.shippingOptions.context, fees)
 
         return binding.root
     }
