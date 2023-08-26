@@ -16,20 +16,20 @@ class ShippingAPI(baseURL: String, callbackPerRoute: MutableMap<String, (value: 
     API(baseURL, callbackPerRoute) {
     fun create(data: Shipping) {
         val body = data.toString().toRequestBody(JSON)
-        return this.call("clientes/", Method.POST, body)
+        return this.call("entregas/", Method.POST, body)
     }
 
     fun list() {
-        return this.call("clientes/", Method.GET, null)
+        return this.call("entregas/", Method.GET, null)
     }
 
     fun update(data: Shipping) {
         val id = data.id!!
         val body = data.toString().toRequestBody(JSON)
-        return this.call("clientes/$id", Method.PATCH, body)
+        return this.call("entregas/$id", Method.PATCH, body)
     }
 
     fun delete(id: String) {
-        return this.call("clientes/$id", Method.DELETE, null)
+        return this.call("entregas/$id", Method.DELETE, null)
     }
 }

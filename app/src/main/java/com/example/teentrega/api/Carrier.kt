@@ -13,20 +13,20 @@ class CarrierAPI (baseURL: String, callbackPerRoute: MutableMap<String, (value: 
     API(baseURL, callbackPerRoute) {
     fun create(data: Carrier) {
         val body = data.toString().toRequestBody(JSON)
-        return this.call("clientes/", Method.POST, body)
+        return this.call("transportadores/", Method.POST, body)
     }
 
     fun list() {
-        return this.call("clientes/", Method.GET, null)
+        return this.call("transportadores/", Method.GET, null)
     }
 
     fun update(data: Carrier) {
         val id = data.id!!
         val body = data.toString().toRequestBody(JSON)
-        return this.call("clientes/$id", Method.PATCH, body)
+        return this.call("transportadores/$id", Method.PATCH, body)
     }
 
     fun delete(id: String) {
-        return this.call("clientes/$id", Method.DELETE, null)
+        return this.call("transportadores/$id", Method.DELETE, null)
     }
 }
