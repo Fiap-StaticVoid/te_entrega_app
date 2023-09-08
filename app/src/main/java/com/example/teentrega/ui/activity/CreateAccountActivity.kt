@@ -5,12 +5,15 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.teentrega.R
+import com.example.teentrega.api.AuthData
 import com.example.teentrega.databinding.ActivityCreateAccountBinding
+import com.example.teentrega.ui.fragment.createaccount.CreateAccountFirstFragment
 
 class CreateAccountActivity : AppCompatActivity() {
 
@@ -19,6 +22,7 @@ class CreateAccountActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //val viewModel: ItemViewModel by viewModels()
         val binding = ActivityCreateAccountBinding.inflate(layoutInflater)
 
         this.window.statusBarColor = ContextCompat.getColor(this, R.color.background)
@@ -38,21 +42,21 @@ class CreateAccountActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(binding.navHostFragment.id) as NavHostFragment
         navController = navHostFragment.navController
 
+        val a: AuthData = AuthData("", "");
+
         binding.buttonContinue.setOnClickListener { it ->
 
             if (navController.currentDestination?.id != R.id.create_account_fragment_5) {
                 val nextFragment = when (navController.currentDestination?.id) {
                     R.id.create_account_fragment_1 -> R.id.create_account_fragment_2
-                    R.id.create_account_fragment_2 -> R.id.create_account_fragment_3
-                    R.id.create_account_fragment_3 -> R.id.create_account_fragment_4
-                    else -> R.id.create_account_fragment_5
+                    else -> R.id.create_account_fragment_3
                 }
 
                 nextFragment.let {
                     navController.navigate(it)
                 }
 
-                if (it.id == R.id.create_account_fragment_5) {
+                if (it.id == R.id.create_account_fragment_3) {
                     binding.buttonContinue.text = getString(R.string.finish)
                 }
             } else {

@@ -72,7 +72,7 @@ open class API (private val baseURL: String, private var callbacksPerOrigin: Cal
         )
     }
 
-    fun updateToken(value: JSONObject): Unit{
+    fun updateToken(value: JSONObject): Unit {
         token = value.getString("token")
     }
     fun login(data: AuthData) {

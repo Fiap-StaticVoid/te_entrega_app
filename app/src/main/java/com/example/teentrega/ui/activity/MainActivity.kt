@@ -22,14 +22,14 @@ class MainActivity : AppCompatActivity() {
         binding.buttonLogin.text = spannable
 
         binding.buttonLogin.setOnClickListener {
-            val intent = Intent(this, DashboardActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
         this.window.statusBarColor = ContextCompat.getColor(this, R.color.background)
 
         binding.buttonRegister.setOnClickListener {
-            val intent = Intent(this, DashboardActivity::class.java)
+            val intent = Intent(this, CreateAccountActivity::class.java)
             startActivity(intent)
         }
 
