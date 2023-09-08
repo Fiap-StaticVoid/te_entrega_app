@@ -46,7 +46,7 @@ class CreateAccountActivity : AppCompatActivity() {
 
         binding.buttonContinue.setOnClickListener { it ->
 
-            if (navController.currentDestination?.id != R.id.create_account_fragment_5) {
+            if (navController.currentDestination?.id != R.id.create_account_fragment_3) {
                 val nextFragment = when (navController.currentDestination?.id) {
                     R.id.create_account_fragment_1 -> R.id.create_account_fragment_2
                     else -> R.id.create_account_fragment_3
