@@ -42,8 +42,6 @@ class CreateAccountActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(binding.navHostFragment.id) as NavHostFragment
         navController = navHostFragment.navController
 
-        val a: AuthData = AuthData("", "");
-
         binding.buttonContinue.setOnClickListener { it ->
 
             if (navController.currentDestination?.id != R.id.create_account_fragment_3) {
