@@ -18,22 +18,35 @@ enum class Method {
     GET, POST, PATCH, DELETE
 }
 
+data class CallBackOrigin (
+    val route: String,
+    val method: Method
+)
+
 data class AuthData (
     val nome_de_usuario: String,
     val senha: String
 )
-open class API (private val baseURL: String, private var callbackPerRoute: MutableMap<String, (value: JSONObject) -> Unit>) {
+
+typealias RouteCallback = (value: JSONObject) -> Unit
+typealias OriginCallbacks = MutableList<RouteCallback>
+typealias CallBackPerOrigin = MutableMap<CallBackOrigin, OriginCallbacks>
+
+open class API (private val baseURL: String, private var callbacksPerOrigin: CallBackPerOrigin) {
     private val client = OkHttpClient()
     private var token: String? = null
-    private fun updateResult(call: Call, response: Response, callback: (value: JSONObject) -> Unit) {
+    private fun updateResult(call: Call, response: Response, callbacks: OriginCallbacks) {
         response.use {
             if (!response.isSuccessful) throw IOException("Unexpected code $response")
-            callback(JSONObject(response.body!!.string()))
+            for (callback in callbacks) {
+                callback(JSONObject(response.body!!.string()))
+            }
         }
     }
 
     open fun call(route: String, method: Method, body: RequestBody?) {
-        val callback = callbackPerRoute[route]!!
+        val origin = CallBackOrigin(route, method)
+        val callbacks = callbacksPerOrigin[origin]!!
         val url = "$baseURL/$route"
         var request = Request.Builder()
             .url(url)
@@ -54,7 +67,7 @@ open class API (private val baseURL: String, private var callbackPerRoute: Mutab
                 override fun onFailure(call: Call, e: IOException) {}
 
                 override fun onResponse(call: Call, response: Response)
-                    { updateResult(call, response, callback) }
+                    { updateResult(call, response, callbacks) }
             }
         )
     }
@@ -63,7 +76,12 @@ open class API (private val baseURL: String, private var callbackPerRoute: Mutab
         token = value.getString("token")
     }
     fun login(data: AuthData) {
-        callbackPerRoute["clientes/autenticar"] = ::updateToken
+        val loginOrigin = CallBackOrigin("clientes/autenticar", Method.POST)
+        if (callbacksPerOrigin.containsKey(loginOrigin)) {
+            callbacksPerOrigin[loginOrigin]!!.add(::updateToken)
+        } else {
+            callbacksPerOrigin[loginOrigin] = mutableListOf(::updateToken)
+        }
         val body = data.toString().toRequestBody(JSON)
         return this.call("clientes/autenticar", Method.POST, body)
     }

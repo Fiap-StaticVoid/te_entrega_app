@@ -1,7 +1,6 @@
 package com.example.teentrega.api
 
 import okhttp3.RequestBody.Companion.toRequestBody
-import org.json.JSONObject
 
 
 data class Client (
@@ -11,8 +10,8 @@ data class Client (
     val senha: String
 )
 
-class ClientAPI(baseURL: String, callbackPerRoute: MutableMap<String, (value: JSONObject) -> Unit>) :
-    API(baseURL, callbackPerRoute) {
+class ClientAPI(baseURL: String, callbacksPerOrigin: CallBackPerOrigin) :
+    API(baseURL, callbacksPerOrigin) {
     fun create(data: Client) {
         val body = data.toString().toRequestBody(JSON)
         return this.call("clientes/", Method.POST, body)

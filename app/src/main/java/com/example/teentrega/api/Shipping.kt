@@ -1,7 +1,6 @@
 package com.example.teentrega.api
 
 import okhttp3.RequestBody.Companion.toRequestBody
-import org.json.JSONObject
 
 data class Shipping (
     val id: String?,
@@ -12,8 +11,8 @@ data class Shipping (
     val id_transportador: String
 )
 
-class ShippingAPI(baseURL: String, callbackPerRoute: MutableMap<String, (value: JSONObject) -> Unit>) :
-    API(baseURL, callbackPerRoute) {
+class ShippingAPI(baseURL: String, callbacksPerOrigin: CallBackPerOrigin) :
+    API(baseURL, callbacksPerOrigin) {
     fun create(data: Shipping) {
         val body = data.toString().toRequestBody(JSON)
         return this.call("entregas/", Method.POST, body)
