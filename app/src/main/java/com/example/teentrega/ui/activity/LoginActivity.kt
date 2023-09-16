@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.teentrega.R
@@ -25,7 +24,6 @@ class LoginActivity : AppCompatActivity() {
         val binding = ActivityLoginBinding.inflate(layoutInflater)
 
         fun update(info: JSONObject) {
-            Log.i("TAG", info.toString())
             val intent = Intent(this, DashboardActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
@@ -34,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
         val mutable : CallBackPerOrigin = mutableMapOf()
         mutable[CallBackOrigin("clientes/autenticar", Method.POST)] = mutableListOf(::update)
 
-        val clienteApi = ClientAPI("http://localhost:8000/", mutable)
+        val clientAPI = ClientAPI("http://localhost:8000/", mutable)
 
         this.window.statusBarColor = ContextCompat.getColor(this, R.color.background)
 
@@ -51,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.buttonEnterAccount.setOnClickListener {
-            clienteApi.login(AuthData(binding.usernameEdit.text.toString(), binding.passwordEdit.text.toString()))
+            clientAPI.login(AuthData(binding.usernameEdit.text.toString(), binding.passwordEdit.text.toString()))
         }
 
         setContentView(binding.root)

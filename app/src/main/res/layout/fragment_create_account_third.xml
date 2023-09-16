@@ -30,7 +30,7 @@
         android:autofillHints="personGivenName"
         android:hint="@string/register_input_name">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/first_name_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +55,7 @@
         android:autofillHints="personFamilyName"
         android:hint="@string/register_input_last_name">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/last_name_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
