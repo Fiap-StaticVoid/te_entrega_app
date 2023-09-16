@@ -76,7 +76,7 @@ open class API (private val baseURL: String, private var callbacksPerOrigin: Cal
         }
         client.newCall(request.build()).enqueue(
             object: Callback {
-                override fun onFailure(call: Call, e: IOException) {}
+                override fun onFailure(call: Call, e: IOException) { }
 
                 override fun onResponse(call: Call, response: Response)
                     { updateResult(call, response, callbacks) }
