@@ -54,7 +54,11 @@ open class API (private val baseURL: String, private var callbacksPerOrigin: Cal
 
     open fun call(route: String, method: Method, body: RequestBody?) {
         val origin = CallBackOrigin(route, method)
-        val callbacks = callbacksPerOrigin[origin]!!
+        val callbacks = try {
+            callbacksPerOrigin[origin]!!
+        } catch (e: NullPointerException) {
+            mutableListOf()
+        }
         val url = "$baseURL/$route"
         var request = Request.Builder()
             .url(url)
