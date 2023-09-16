@@ -45,7 +45,7 @@ class CreateAccountActivity : AppCompatActivity(), LifecycleOwner {
         }
 
         val mutable : CallBackPerOrigin = mutableMapOf()
-        mutable[CallBackOrigin("clientes/autenticar", Method.POST)] = mutableListOf(::update)
+        mutable[CallBackOrigin("clientes/", Method.POST)] = mutableListOf(::update)
 
         val clientApi = ClientAPI("http://localhost:8000/", mutable)
 
