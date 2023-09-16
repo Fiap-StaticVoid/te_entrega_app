@@ -31,7 +31,7 @@
         android:autofillHints="password"
         android:hint="@string/register_input_password">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.TextInputEditText android:id="@id/password_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +58,7 @@
         android:autofillHints="password"
         android:hint="@string/register_input_confirm_password">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/confirm_password_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"

@@ -8,7 +8,13 @@ import android.text.style.ForegroundColorSpan
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.teentrega.R
+import com.example.teentrega.api.AuthData
+import com.example.teentrega.api.CallBackOrigin
+import com.example.teentrega.api.CallBackPerOrigin
 import com.example.teentrega.databinding.ActivityLoginBinding
+import com.example.teentrega.api.ClientAPI
+import com.example.teentrega.api.Method
+import org.json.JSONObject
 
 
 class LoginActivity : AppCompatActivity() {
@@ -17,6 +23,17 @@ class LoginActivity : AppCompatActivity() {
 
         val binding = ActivityLoginBinding.inflate(layoutInflater)
 
+        fun update(info: JSONObject) {
+            val intent = Intent(this, DashboardActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+        }
+
+        val mutable : CallBackPerOrigin = mutableMapOf()
+        mutable[CallBackOrigin("clientes/autenticar", Method.POST)] = mutableListOf(::update)
+
+        val clientAPI = ClientAPI("http://localhost:8000/", mutable)
+
         this.window.statusBarColor = ContextCompat.getColor(this, R.color.background)
 
         val spannable = SpannableString("${getString(R.string.dont_have_account)} ${getString(R.string.create)}")
@@ -24,10 +41,15 @@ class LoginActivity : AppCompatActivity() {
             ForegroundColorSpan(getColor(R.color.text_main)),
             0,20, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
         binding.buttonLogin.text = spannable
+
         binding.buttonLogin.setOnClickListener {
             val intent = Intent(this, CreateAccountActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
+        }
+
+        binding.buttonEnterAccount.setOnClickListener {
+            clientAPI.login(AuthData(binding.usernameEdit.text.toString(), binding.passwordEdit.text.toString()))
         }
 
         setContentView(binding.root)

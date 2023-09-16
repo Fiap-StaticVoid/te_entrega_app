@@ -52,13 +52,13 @@
     <string name="app_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt blandit eros ac ullamcorper.</string>
     <string name="welcome">Bem vindo!</string>
     <string name="login_title">Digite os seus dados</string>
-    <string name="register_title_1">Qual o seu número de telefone?</string>
+    <string name="register_title_1">Qual será o seu nome de usuário?</string>
     <string name="register_title_2">Escolha uma senha</string>
     <string name="register_title_3">Qual o seu nome?</string>
     <string name="register_title_4">Qual o seu CPF?</string>
     <string name="create_an_account">Criar uma conta</string>
     <string name="register_title_5">Qual o seu endereço?</string>
-    <string name="register_input_phone_number">Digite o seu número de telefone</string>
+    <string name="register_input_username">Digite o seu nome de usuário</string>
     <string name="register_input_password">Digite a sua senha</string>
     <string name="register_input_confirm_password">Confirme a sua senha</string>
     <string name="register_input_cpf">Digite o seu CPF</string>

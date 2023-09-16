@@ -5,16 +5,31 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.teentrega.R
+import com.example.teentrega.api.AuthData
+import com.example.teentrega.api.CallBackOrigin
+import com.example.teentrega.api.CallBackPerOrigin
+import com.example.teentrega.api.Client
+import com.example.teentrega.api.ClientAPI
+import com.example.teentrega.api.Method
 import com.example.teentrega.databinding.ActivityCreateAccountBinding
+import com.example.teentrega.ui.AccountViewModel
+import com.example.teentrega.ui.fragment.createaccount.CreateAccountFirstFragment
+import org.json.JSONObject
 
-class CreateAccountActivity : AppCompatActivity() {
+class CreateAccountActivity : AppCompatActivity(), LifecycleOwner {
 
     private lateinit var navController: NavController
+    private val viewModel: AccountViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +37,36 @@ class CreateAccountActivity : AppCompatActivity() {
         val binding = ActivityCreateAccountBinding.inflate(layoutInflater)
 
         this.window.statusBarColor = ContextCompat.getColor(this, R.color.background)
+
+        fun update(info: JSONObject) {
+            val intent = Intent(this, FinishAccountCreationActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+
+        val mutable : CallBackPerOrigin = mutableMapOf()
+        mutable[CallBackOrigin("clientes/autenticar", Method.POST)] = mutableListOf(::update)
+
+        val clientApi = ClientAPI("http://localhost:8000/", mutable)
+
+        fun checkInput() {
+            binding.buttonContinue.isEnabled = when (navController.currentDestination?.id) {
+                R.id.create_account_fragment_1 -> {
+                    viewModel.username.value != ""
+                }
+                R.id.create_account_fragment_2 -> {
+                    viewModel.password.value != ""
+                }
+                else -> {
+                    viewModel.firstName.value != "" && viewModel.lastName.value != ""
+                }
+            }
+        }
+
+        viewModel.username.observe(this) { _ -> checkInput() }
+        viewModel.password.observe(this) { _ -> checkInput() }
+        viewModel.firstName.observe(this) { _ -> checkInput() }
+        viewModel.lastName.observe(this) { _ -> checkInput() }
 
         val spannable = SpannableString("${getString(R.string.already_have_account)} ${getString(R.string.enter)}")
         spannable.setSpan(
@@ -39,26 +84,29 @@ class CreateAccountActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         binding.buttonContinue.setOnClickListener { it ->
+            val currentId = navController.currentDestination?.id
 
-            if (navController.currentDestination?.id != R.id.create_account_fragment_5) {
-                val nextFragment = when (navController.currentDestination?.id) {
+            if (currentId != R.id.create_account_fragment_3) {
+                val nextFragment = when (currentId) {
                     R.id.create_account_fragment_1 -> R.id.create_account_fragment_2
-                    R.id.create_account_fragment_2 -> R.id.create_account_fragment_3
-                    R.id.create_account_fragment_3 -> R.id.create_account_fragment_4
-                    else -> R.id.create_account_fragment_5
+                    else -> R.id.create_account_fragment_3
                 }
 
                 nextFragment.let {
                     navController.navigate(it)
+                    checkInput()
                 }
 
-                if (it.id == R.id.create_account_fragment_5) {
+                if (currentId == R.id.create_account_fragment_2) {
                     binding.buttonContinue.text = getString(R.string.finish)
                 }
             } else {
-                val intent = Intent(this, FinishAccountCreationActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                startActivity(intent)
+                binding.buttonContinue.text = getString(R.string.finish)
+
+                clientApi.create(Client(null,
+                    (viewModel.firstName.value.toString() + " " + viewModel.lastName.value.toString()),
+                    viewModel.username.value.toString(),
+                    viewModel.password.value.toString()))
             }
         }
 
