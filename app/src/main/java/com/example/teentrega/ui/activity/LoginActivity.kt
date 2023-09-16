@@ -14,6 +14,7 @@ import com.example.teentrega.api.CallBackPerOrigin
 import com.example.teentrega.databinding.ActivityLoginBinding
 import com.example.teentrega.api.ClientAPI
 import com.example.teentrega.api.Method
+import com.example.teentrega.utils.Constants
 import org.json.JSONObject
 
 
@@ -32,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
         val mutable : CallBackPerOrigin = mutableMapOf()
         mutable[CallBackOrigin("clientes/autenticar", Method.POST)] = mutableListOf(::update)
 
-        val clientAPI = ClientAPI("http://localhost:8000/", mutable)
+        val clientAPI = ClientAPI(Constants.IP, mutable)
 
         this.window.statusBarColor = ContextCompat.getColor(this, R.color.background)
 

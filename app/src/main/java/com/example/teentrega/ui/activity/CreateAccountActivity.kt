@@ -19,6 +19,7 @@ import com.example.teentrega.api.ClientAPI
 import com.example.teentrega.api.Method
 import com.example.teentrega.databinding.ActivityCreateAccountBinding
 import com.example.teentrega.ui.AccountViewModel
+import com.example.teentrega.utils.Constants
 import org.json.JSONObject
 
 class CreateAccountActivity : AppCompatActivity(), LifecycleOwner {
@@ -43,7 +44,7 @@ class CreateAccountActivity : AppCompatActivity(), LifecycleOwner {
         val mutable : CallBackPerOrigin = mutableMapOf()
         mutable[CallBackOrigin("clientes/", Method.POST)] = mutableListOf(::update)
 
-        val clientApi = ClientAPI("http://172.30.16.1:8000", mutable)
+        val clientAPI = ClientAPI(Constants.IP, mutable)
 
         fun checkInput() {
             binding.buttonContinue.isEnabled = when (navController.currentDestination?.id) {
@@ -98,7 +99,7 @@ class CreateAccountActivity : AppCompatActivity(), LifecycleOwner {
                 }
             } else {
                 binding.buttonContinue.text = getString(R.string.finish)
-                clientApi.create(Client(null,
+                clientAPI.create(Client(null,
                     (viewModel.firstName.value.toString() + " " + viewModel.lastName.value.toString()),
                     viewModel.username.value.toString(),
                     viewModel.password.value.toString()))
