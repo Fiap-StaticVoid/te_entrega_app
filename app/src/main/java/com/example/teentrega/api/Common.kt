@@ -1,5 +1,6 @@
 package com.example.teentrega.api
 
+import com.google.gson.Gson
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.MediaType
@@ -26,7 +27,14 @@ data class CallBackOrigin (
 data class AuthData (
     val nome_de_usuario: String,
     val senha: String
-)
+) {
+    fun paraJson(): String {
+        val dados = mutableMapOf<String, String>()
+        dados["nome_de_usuario"] = this.nome_de_usuario
+        dados["senha"] = this.senha
+        return Gson().toJson(dados)
+    }
+}
 
 typealias RouteCallback = (value: JSONObject) -> Unit
 typealias OriginCallbacks = MutableList<RouteCallback>
@@ -82,7 +90,7 @@ open class API (private val baseURL: String, private var callbacksPerOrigin: Cal
         } else {
             callbacksPerOrigin[loginOrigin] = mutableListOf(::updateToken)
         }
-        val body = data.toString().toRequestBody(JSON)
+        val body = data.paraJson().toRequestBody(JSON)
         return this.call("clientes/autenticar", Method.POST, body)
     }
 }

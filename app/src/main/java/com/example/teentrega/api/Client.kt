@@ -1,5 +1,6 @@
 package com.example.teentrega.api
 
+import com.google.gson.Gson
 import okhttp3.RequestBody.Companion.toRequestBody
 
 
@@ -8,12 +9,23 @@ data class Client (
     val nome: String,
     val nome_de_usuario: String,
     val senha: String
-)
+) {
+    fun paraJson(): String {
+        val dados = mutableMapOf<String, String>()
+        if (this.id != null) {
+            dados["id"] = this.id
+        }
+        dados["nome"] = this.nome
+        dados["nome_de_usuario"] = this.nome_de_usuario
+        dados["senha"] = this.senha
+        return Gson().toJson(dados)
+    }
+}
 
 class ClientAPI(baseURL: String, callbacksPerOrigin: CallBackPerOrigin) :
     API(baseURL, callbacksPerOrigin) {
     fun create(data: Client) {
-        val body = data.toString().toRequestBody(JSON)
+        val body = data.paraJson().toRequestBody(JSON)
         return this.call("clientes/", Method.POST, body)
     }
 
@@ -23,7 +35,7 @@ class ClientAPI(baseURL: String, callbacksPerOrigin: CallBackPerOrigin) :
 
     fun update(data: Client) {
         val id = data.id!!
-        val body = data.toString().toRequestBody(JSON)
+        val body = data.paraJson().toRequestBody(JSON)
         return this.call("clientes/$id", Method.PATCH, body)
     }
 
