@@ -1,5 +1,6 @@
 package com.example.teentrega.ui.activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Spannable
@@ -11,9 +12,9 @@ import com.example.teentrega.R
 import com.example.teentrega.api.AuthData
 import com.example.teentrega.api.CallBackOrigin
 import com.example.teentrega.api.CallBackPerOrigin
-import com.example.teentrega.databinding.ActivityLoginBinding
 import com.example.teentrega.api.ClientAPI
 import com.example.teentrega.api.Method
+import com.example.teentrega.databinding.ActivityLoginBinding
 import com.example.teentrega.utils.Constants
 import org.json.JSONObject
 
@@ -25,6 +26,11 @@ class LoginActivity : AppCompatActivity() {
         val binding = ActivityLoginBinding.inflate(layoutInflater)
 
         fun update(info: JSONObject) {
+            val sharedPref = getPreferences(Context.MODE_PRIVATE)
+            with (sharedPref.edit()) {
+                putString("BearerToken", info.getString("token"))
+                apply()
+            }
             val intent = Intent(this, DashboardActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
