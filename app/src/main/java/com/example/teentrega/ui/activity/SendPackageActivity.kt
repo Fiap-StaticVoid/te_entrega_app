@@ -19,6 +19,8 @@ import com.example.teentrega.viewmodel.AccountViewModel
 import com.example.teentrega.viewmodel.PackageViewModel
 import org.json.JSONObject
 import java.time.LocalDateTime
+import java.time.OffsetDateTime
+import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 
 class SendPackageActivity : AppCompatActivity() {
@@ -56,8 +58,11 @@ class SendPackageActivity : AppCompatActivity() {
         val shippingAPI = ShippingAPI(Constants.IP, mutable)
 
         binding.buttonContinue.setOnClickListener { it ->
-            shippingAPI.create(Shipping(null, LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")),
-                LocalDateTime.now().plusDays(7).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")), emptyList(), "", ""))
+            val local = LocalDateTime.now()
+            val date = OffsetDateTime.of(local, ZoneOffset.UTC)
+
+            shippingAPI.create(Shipping(null, date.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME),
+                date.plusDays(7).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME), listOf(), "885f14b6-498e-4525-8250-9424a3a52b3a", "2f2ffb54-89b4-4a98-9f90-d171a5dcba87"))
         }
 
         setContentView(binding.root)
