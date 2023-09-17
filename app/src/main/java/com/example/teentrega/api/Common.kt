@@ -46,8 +46,9 @@ open class API (private val baseURL: String, private var callbacksPerOrigin: Cal
     private fun updateResult(call: Call, response: Response, callbacks: OriginCallbacks) {
         response.use {
             if (!response.isSuccessful) throw IOException("Unexpected code $response")
+            val bodyRes = response.body!!.string()
             for (callback in callbacks) {
-                callback(JSONObject(response.body!!.string()))
+                callback(JSONObject(bodyRes))
             }
         }
     }
