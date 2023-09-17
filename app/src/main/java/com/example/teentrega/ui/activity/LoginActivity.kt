@@ -26,11 +26,12 @@ class LoginActivity : AppCompatActivity() {
         val binding = ActivityLoginBinding.inflate(layoutInflater)
 
         fun update(info: JSONObject) {
-            val sharedPref = getPreferences(Context.MODE_PRIVATE)
-            with (sharedPref.edit()) {
-                putString("BearerToken", info.getString("token"))
-                apply()
-            }
+            val sharedPref = getSharedPreferences(Constants.SHARED_PREF, Context.MODE_PRIVATE)
+
+            val editor = sharedPref.edit()
+            editor.putString(Constants.BEARER_TOKEN, info.getString("token"))
+            editor.apply()
+
             val intent = Intent(this, DashboardActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)

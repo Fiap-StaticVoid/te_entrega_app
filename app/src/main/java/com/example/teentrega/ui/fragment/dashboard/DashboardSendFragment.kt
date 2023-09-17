@@ -1,7 +1,10 @@
 package com.example.teentrega.ui.fragment.dashboard
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +25,8 @@ import org.json.JSONObject
 
 
 class DashboardSendFragment : Fragment() {
+    private lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,6 +55,11 @@ class DashboardSendFragment : Fragment() {
         mutable[CallBackOrigin("entregas/", Method.POST)] = mutableListOf(::update)
 
         val shippingAPI = ShippingAPI(Constants.IP, mutable)
+        sharedPreferences = requireActivity().getSharedPreferences(Constants.SHARED_PREF, Context.MODE_PRIVATE)
+
+        val token = sharedPreferences.getString(Constants.BEARER_TOKEN, null)
+
+        shippingAPI.token = token
 
         shippingAPI.list()
 

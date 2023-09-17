@@ -21,15 +21,7 @@ class DashboardActivity : AppCompatActivity() {
         this.window.statusBarColor = ContextCompat.getColor(this, R.color.background)
 
         val extras = intent.extras
-
-        fun update(info: JSONObject) {
-
-        }
-
-        val mutable = mutableMapOf<String, (value: JSONObject) -> Unit>()
-        mutable["clientes/"] = ::update
-        //val clienteApi = ClientAPI("http://localhost:8000/", mutable)
-
+        
         if (extras != null) {
             if (extras.getBoolean("sendPackage")) {
                 val intent = Intent(this, SendPackageActivity::class.java)

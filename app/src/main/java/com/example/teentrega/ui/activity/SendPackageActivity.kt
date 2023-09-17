@@ -1,5 +1,6 @@
 package com.example.teentrega.ui.activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -56,6 +57,7 @@ class SendPackageActivity : AppCompatActivity() {
         mutable[CallBackOrigin("entregas/", Method.POST)] = mutableListOf(::update)
 
         val shippingAPI = ShippingAPI(Constants.IP, mutable)
+        shippingAPI.token = getSharedPreferences(Constants.SHARED_PREF, Context.MODE_PRIVATE).getString(Constants.BEARER_TOKEN, null)
 
         binding.buttonContinue.setOnClickListener { it ->
             val local = LocalDateTime.now()

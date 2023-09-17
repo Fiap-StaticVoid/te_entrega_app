@@ -1,10 +1,12 @@
 package com.example.teentrega.ui.activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -12,6 +14,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.teentrega.R
+import com.example.teentrega.api.AuthData
 import com.example.teentrega.api.CallBackOrigin
 import com.example.teentrega.api.CallBackPerOrigin
 import com.example.teentrega.api.Client
@@ -27,7 +30,6 @@ class CreateAccountActivity : AppCompatActivity(), LifecycleOwner {
     private lateinit var navController: NavController
     private val viewModel: AccountViewModel by viewModels()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,14 +37,29 @@ class CreateAccountActivity : AppCompatActivity(), LifecycleOwner {
 
         this.window.statusBarColor = ContextCompat.getColor(this, R.color.background)
 
-        fun update(info: JSONObject) {
+        fun login(info: JSONObject) {
+            val sharedPref = getPreferences(Context.MODE_PRIVATE)
+            with (sharedPref.edit()) {
+                putString("BearerToken", info.getString("token"))
+                apply()
+            }
+
             val intent = Intent(this, FinishAccountCreationActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
 
+        fun onCreate(info: JSONObject) {
+            val mutable : CallBackPerOrigin = mutableMapOf()
+            mutable[CallBackOrigin("clientes/autenticar", Method.POST)] = mutableListOf(::login)
+
+            val clientAPI = ClientAPI(Constants.IP, mutable)
+
+            clientAPI.login(AuthData(viewModel.username.value.toString(), viewModel.password.value.toString()))
+        }
+
         val mutable : CallBackPerOrigin = mutableMapOf()
-        mutable[CallBackOrigin("clientes/", Method.POST)] = mutableListOf(::update)
+        mutable[CallBackOrigin("clientes/", Method.POST)] = mutableListOf(::onCreate)
 
         val clientAPI = ClientAPI(Constants.IP, mutable)
 
@@ -99,6 +116,7 @@ class CreateAccountActivity : AppCompatActivity(), LifecycleOwner {
                 }
             } else {
                 binding.buttonContinue.text = getString(R.string.finish)
+
                 clientAPI.create(Client(null,
                     (viewModel.firstName.value.toString() + " " + viewModel.lastName.value.toString()),
                     viewModel.username.value.toString(),
