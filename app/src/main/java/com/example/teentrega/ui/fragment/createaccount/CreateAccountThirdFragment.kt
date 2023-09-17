@@ -7,10 +7,8 @@ import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.example.teentrega.R
-import com.example.teentrega.databinding.FragmentCreateAccountSecondBinding
 import com.example.teentrega.databinding.FragmentCreateAccountThirdBinding
-import com.example.teentrega.ui.AccountViewModel
+import com.example.teentrega.viewmodel.AccountViewModel
 
 
 class CreateAccountThirdFragment : Fragment() {

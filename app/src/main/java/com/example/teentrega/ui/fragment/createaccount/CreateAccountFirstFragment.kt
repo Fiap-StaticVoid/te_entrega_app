@@ -7,10 +7,8 @@ import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.example.teentrega.R
 import com.example.teentrega.databinding.FragmentCreateAccountFirstBinding
-import com.example.teentrega.databinding.FragmentDashboardTrackingBinding
-import com.example.teentrega.ui.AccountViewModel
+import com.example.teentrega.viewmodel.AccountViewModel
 
 
 class CreateAccountFirstFragment : Fragment() {
@@ -18,7 +16,7 @@ class CreateAccountFirstFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentCreateAccountFirstBinding.inflate(inflater)
 
         binding.usernameEdit.setText(viewModel.username.value)

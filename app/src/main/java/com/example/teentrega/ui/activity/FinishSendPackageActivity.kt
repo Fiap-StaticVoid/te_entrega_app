@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import com.example.teentrega.R
 import com.example.teentrega.databinding.ActivityFinishSendPackageBinding
+import com.example.teentrega.viewmodel.AccountViewModel
 
 class FinishSendPackageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

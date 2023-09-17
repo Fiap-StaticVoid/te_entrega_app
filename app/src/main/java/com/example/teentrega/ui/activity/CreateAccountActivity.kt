@@ -18,7 +18,7 @@ import com.example.teentrega.api.Client
 import com.example.teentrega.api.ClientAPI
 import com.example.teentrega.api.Method
 import com.example.teentrega.databinding.ActivityCreateAccountBinding
-import com.example.teentrega.ui.AccountViewModel
+import com.example.teentrega.viewmodel.AccountViewModel
 import com.example.teentrega.utils.Constants
 import org.json.JSONObject
 

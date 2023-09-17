@@ -4,18 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
-import com.example.teentrega.common.Httpx
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LifecycleOwner
 import com.example.teentrega.databinding.FragmentSendPackageLocationBinding
-import org.json.JSONArray
+import com.example.teentrega.viewmodel.PackageViewModel
 
 
-class SendPackageLocationFragment : Fragment() {
+class SendPackageLocationFragment : Fragment(), LifecycleOwner {
 
-    private lateinit var adapter: ArrayAdapter<String>
-    private val acronyms = mutableListOf<String>()
+    private val viewModel: PackageViewModel by activityViewModels()
+    /*private lateinit var adapter: ArrayAdapter<String>
+    private val acronyms = mutableListOf<String>()*/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,7 +24,23 @@ class SendPackageLocationFragment : Fragment() {
     ): View {
         val binding = FragmentSendPackageLocationBinding.inflate(inflater)
 
-        fun updateStates(states: JSONArray) {
+        viewModel.setCEP("")
+        viewModel.setAddress("")
+        viewModel.setNumber("")
+
+        binding.cepEdit.doAfterTextChanged {
+            viewModel.setCEP(it.toString())
+        }
+
+        binding.addressEdit.doAfterTextChanged {
+            viewModel.setAddress(it.toString())
+        }
+
+        binding.numberEdit.doAfterTextChanged {
+            viewModel.setNumber(it.toString())
+        }
+
+        /*fun updateStates(states: JSONArray) {
             val statesList = mutableListOf<String>()
 
             for (i in 0 until states.length()) {
@@ -75,6 +92,7 @@ class SendPackageLocationFragment : Fragment() {
             }
 
         Httpx(::updateStates).getStates()
+         */
 
         return binding.root
     }
