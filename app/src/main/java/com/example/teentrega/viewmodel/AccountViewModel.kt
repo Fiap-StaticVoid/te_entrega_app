@@ -1,4 +1,4 @@
-package com.example.teentrega.ui
+package com.example.teentrega.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
