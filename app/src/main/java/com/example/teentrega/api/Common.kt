@@ -63,10 +63,10 @@ open class API (private val baseURL: String, private var callbacksPerOrigin: Cal
         val url = "$baseURL/$route"
         var request = Request.Builder()
             .url(url)
-        if (token.toBoolean()) {
+        if (token != null) {
             request = request.addHeader(
                 "Authorization",
-                token!!
+                "Bearer ${token!!}"
             )
         }
         request = when (method) {
