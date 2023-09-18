@@ -12,13 +12,13 @@ data class Shipping (
     val id_transportador: String
 ) {
     fun paraJson(): String {
-        val dados = mutableMapOf<String, String>()
+        val dados = mutableMapOf<String, Any>()
         if (this.id != null) {
             dados["id"] = this.id
         }
         dados["data_da_solicitacao"] = this.data_da_solicitacao
         dados["data_da_entrega"] = this.data_da_entrega
-        dados["produtos"] = this.produtos.joinToString(prefix = "[", postfix = "]")
+        dados["produtos"] = this.produtos
         dados["id_cliente"] = this.id_cliente
         dados["id_transportador"] = this.id_transportador
         return Gson().toJson(dados)
