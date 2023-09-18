@@ -42,7 +42,7 @@ typealias CallBackPerOrigin = MutableMap<CallBackOrigin, OriginCallbacks>
 
 open class API (private val baseURL: String, private var callbacksPerOrigin: CallBackPerOrigin) {
     private val client = OkHttpClient()
-    private var token: String? = null
+    var token: String? = null
     private fun updateResult(call: Call, response: Response, callbacks: OriginCallbacks) {
         response.use {
             if (!response.isSuccessful) throw IOException("Unexpected code $response")
