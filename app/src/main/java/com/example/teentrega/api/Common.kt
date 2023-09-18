@@ -10,6 +10,8 @@ import okhttp3.Request
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.Response
+import org.json.JSONArray
+import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
 
@@ -36,7 +38,7 @@ data class AuthData (
     }
 }
 
-typealias RouteCallback = (value: JSONObject) -> Unit
+typealias RouteCallback = (value: Any) -> Unit
 typealias OriginCallbacks = MutableList<RouteCallback>
 typealias CallBackPerOrigin = MutableMap<CallBackOrigin, OriginCallbacks>
 
@@ -48,7 +50,12 @@ open class API (private val baseURL: String, private var callbacksPerOrigin: Cal
             if (!response.isSuccessful) throw IOException("Unexpected code $response")
             val bodyRes = response.body!!.string()
             for (callback in callbacks) {
-                callback(JSONObject(bodyRes))
+                val obj = try {
+                    JSONObject(bodyRes)
+                } catch (e: JSONException) {
+                    JSONArray(bodyRes)
+                }
+                callback(obj)
             }
         }
     }
@@ -85,7 +92,8 @@ open class API (private val baseURL: String, private var callbacksPerOrigin: Cal
         )
     }
 
-    fun updateToken(value: JSONObject): Unit {
+    fun updateToken(value: Any): Unit {
+        if (value !is JSONObject) return
         token = value.getString("token")
     }
     fun login(data: AuthData) {
