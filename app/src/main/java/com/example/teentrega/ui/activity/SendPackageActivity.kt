@@ -39,7 +39,7 @@ class SendPackageActivity : AppCompatActivity() {
 
         binding.buttonContinue.text = getString(R.string.finish)
 
-        fun update(info: JSONObject) {
+        fun update(info: Any) {
             val intent = Intent(this, FinishSendPackageActivity::class.java)
             this@SendPackageActivity.finish()
             startActivity(intent)
@@ -64,7 +64,7 @@ class SendPackageActivity : AppCompatActivity() {
             val date = OffsetDateTime.of(local, ZoneOffset.UTC)
 
             shippingAPI.create(Shipping(null, date.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME),
-                date.plusDays(7).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME), listOf(), "885f14b6-498e-4525-8250-9424a3a52b3a", "2f2ffb54-89b4-4a98-9f90-d171a5dcba87"))
+                date.plusDays(7).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME), listOf(), "a69279c1-a63d-42a5-926f-a1b0c7c268b2", "2f2ffb54-89b4-4a98-9f90-d171a5dcba87"))
         }
 
         setContentView(binding.root)

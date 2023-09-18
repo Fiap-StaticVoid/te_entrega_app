@@ -16,11 +16,15 @@ import com.example.teentrega.api.Method
 import com.example.teentrega.api.ShippingAPI
 import com.example.teentrega.databinding.FragmentDashboardSendBinding
 import com.example.teentrega.model.PackageInfo
+import com.example.teentrega.model.PackageType
+import com.example.teentrega.model.ShippingType
 import com.example.teentrega.ui.activity.FinishSendPackageActivity
 import com.example.teentrega.ui.activity.SendPackageActivity
 import com.example.teentrega.ui.recyclerview.adapter.PackageListAdapter
 import com.example.teentrega.utils.Constants
 import com.example.teentrega.viewmodel.AccountViewModel
+import org.json.JSONArray
+import org.json.JSONException
 import org.json.JSONObject
 
 
@@ -34,8 +38,25 @@ class DashboardSendFragment : Fragment() {
 
         val binding = FragmentDashboardSendBinding.inflate(inflater)
 
-        fun update(info: JSONObject) {
-            val packages: List<PackageInfo> = listOf()
+        fun update(info: Any) {
+            if (info !is JSONArray) return
+
+            Log.i("DEBUG", info.toString())
+            val packages = mutableListOf<PackageInfo>()
+
+            for (i in 0 until info.length()) {
+                val data = info.getJSONObject(i)
+                Log.i("DEBUG", data.toString())
+                packages.add(
+                    PackageInfo(
+                        ShippingType.NONE,
+                        PackageType.SEND,
+                        data.getString("id"),
+                        data.getString("data_da_solicitacao"),
+                        ""
+                    )
+                )
+            }
 
             if (packages.size > 0) {
                 binding.emptyShipments.visibility = View.GONE
@@ -52,7 +73,7 @@ class DashboardSendFragment : Fragment() {
         binding.shipmentsList.visibility = View.GONE
 
         val mutable : CallBackPerOrigin = mutableMapOf()
-        mutable[CallBackOrigin("entregas/", Method.POST)] = mutableListOf(::update)
+        mutable[CallBackOrigin("entregas/", Method.GET)] = mutableListOf(::update)
 
         val shippingAPI = ShippingAPI(Constants.IP, mutable)
         sharedPreferences = requireActivity().getSharedPreferences(Constants.SHARED_PREF, Context.MODE_PRIVATE)

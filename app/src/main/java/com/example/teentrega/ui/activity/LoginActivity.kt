@@ -25,7 +25,8 @@ class LoginActivity : AppCompatActivity() {
 
         val binding = ActivityLoginBinding.inflate(layoutInflater)
 
-        fun update(info: JSONObject) {
+        fun update(info: Any) {
+            if (info !is JSONObject) return
             val sharedPref = getSharedPreferences(Constants.SHARED_PREF, Context.MODE_PRIVATE)
 
             val editor = sharedPref.edit()

@@ -37,7 +37,8 @@ class CreateAccountActivity : AppCompatActivity(), LifecycleOwner {
 
         this.window.statusBarColor = ContextCompat.getColor(this, R.color.background)
 
-        fun login(info: JSONObject) {
+        fun login(info: Any) {
+            if (info !is JSONObject) return
             val sharedPref = getPreferences(Context.MODE_PRIVATE)
             with (sharedPref.edit()) {
                 putString("BearerToken", info.getString("token"))
@@ -49,7 +50,7 @@ class CreateAccountActivity : AppCompatActivity(), LifecycleOwner {
             startActivity(intent)
         }
 
-        fun onCreate(info: JSONObject) {
+        fun onCreate(info: Any) {
             val mutable : CallBackPerOrigin = mutableMapOf()
             mutable[CallBackOrigin("clientes/autenticar", Method.POST)] = mutableListOf(::login)
 
