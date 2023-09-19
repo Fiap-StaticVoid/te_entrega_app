@@ -51,7 +51,7 @@ class DashboardSendFragment : Fragment() {
                     PackageInfo(
                         ShippingType.NONE,
                         PackageType.SEND,
-                        data.getString("id"),
+                        "Encomenda",
                         data.getString("data_da_solicitacao"),
                         ""
                     )

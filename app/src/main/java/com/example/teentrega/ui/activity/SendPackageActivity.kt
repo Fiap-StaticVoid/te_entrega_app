@@ -64,7 +64,7 @@ class SendPackageActivity : AppCompatActivity() {
             val date = OffsetDateTime.of(local, ZoneOffset.UTC)
 
             shippingAPI.create(Shipping(null, date.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME),
-                date.plusDays(7).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME), listOf(), "a69279c1-a63d-42a5-926f-a1b0c7c268b2", "2f2ffb54-89b4-4a98-9f90-d171a5dcba87"))
+                date.plusDays(7).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME), listOf(), "6baa4941-113d-408e-b550-1f240472f216", "2f2ffb54-89b4-4a98-9f90-d171a5dcba87"))
         }
 
         setContentView(binding.root)

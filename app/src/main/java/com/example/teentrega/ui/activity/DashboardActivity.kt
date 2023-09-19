@@ -32,13 +32,13 @@ class DashboardActivity : AppCompatActivity() {
         val binding = ActivityDashboardBinding.inflate(layoutInflater)
         replaceWith(DashboardSendFragment())
 
-        binding.navView.setOnItemSelectedListener {
+        /*binding.navView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.send -> replaceWith(DashboardSendFragment())
                 R.id.track -> replaceWith(DashboardTrackingFragment())
             }
             return@setOnItemSelectedListener true
-        }
+        }*/
 
         setContentView(binding.root)
     }
