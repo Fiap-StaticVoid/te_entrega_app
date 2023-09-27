@@ -41,12 +41,10 @@ class DashboardSendFragment : Fragment() {
         fun update(info: Any) {
             if (info !is JSONArray) return
 
-            Log.i("DEBUG", info.toString())
             val packages = mutableListOf<PackageInfo>()
 
             for (i in 0 until info.length()) {
                 val data = info.getJSONObject(i)
-                Log.i("DEBUG", data.toString())
                 packages.add(
                     PackageInfo(
                         ShippingType.NONE,
