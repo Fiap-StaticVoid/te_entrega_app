@@ -31,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
 
             val editor = sharedPref.edit()
             editor.putString(Constants.BEARER_TOKEN, info.getString("token"))
+            editor.putString(Constants.CLIENT_ID_PREF, info.getString("id"))
             editor.apply()
 
             val intent = Intent(this, DashboardActivity::class.java)

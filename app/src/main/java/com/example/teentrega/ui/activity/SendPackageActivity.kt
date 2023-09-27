@@ -10,15 +10,12 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.teentrega.R
 import com.example.teentrega.api.CallBackOrigin
 import com.example.teentrega.api.CallBackPerOrigin
-import com.example.teentrega.api.ClientAPI
 import com.example.teentrega.api.Method
 import com.example.teentrega.api.Shipping
 import com.example.teentrega.api.ShippingAPI
 import com.example.teentrega.databinding.ActivitySendPackageBinding
 import com.example.teentrega.utils.Constants
-import com.example.teentrega.viewmodel.AccountViewModel
 import com.example.teentrega.viewmodel.PackageViewModel
-import org.json.JSONObject
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
@@ -62,9 +59,11 @@ class SendPackageActivity : AppCompatActivity() {
         binding.buttonContinue.setOnClickListener { it ->
             val local = LocalDateTime.now()
             val date = OffsetDateTime.of(local, ZoneOffset.UTC)
+            val sharedPref = getSharedPreferences(Constants.SHARED_PREF, Context.MODE_PRIVATE)
+            val clientID = sharedPref.getString(Constants.CLIENT_ID_PREF, "")
 
             shippingAPI.create(Shipping(null, date.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME),
-                date.plusDays(7).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME), listOf(), Constants.CLIENT, Constants.TRANSPORTER))
+                date.plusDays(7).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME), listOf(), clientID!!, Constants.TRANSPORTER))
         }
 
         setContentView(binding.root)
